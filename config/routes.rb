@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'home#top'
+  root 'homes#top'
   devise_for :admins
   devise_for :customers
   get "homes/about" => "homes#about"
