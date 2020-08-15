@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'orders/thanks'
   root 'homes#top'
   devise_for :admins
   devise_for :customers
