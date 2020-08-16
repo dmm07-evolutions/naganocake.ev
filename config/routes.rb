@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :items, only: [:index, :show]
   # cart_itemsのルーティング
   resources :cart_items, only: [:index, :create, :destroy]
+  resources :ordered_item,only:[:index, :create, :edit, :show]
   patch "cart_items/:id" => "cart_items#quantity"
   delete "cart_items/destroy_all" => "cart_items#destroy_all"
 
