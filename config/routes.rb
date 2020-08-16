@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
+  get 'orders/thanks'
+  get 'orders/histry_index'
+  get 'orders/histry_show'
   root 'homes#top'
   devise_for :admins
   devise_for :customers
   get "homes/about" => "homes#about"
-
+  resources :orders, only:[:new, :create, :index]
   # itemsのルーティング
   resources :items, only: [:index, :show]
   # cart_itemsのルーティング
