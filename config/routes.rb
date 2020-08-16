@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'genres/index'
-  get 'genres/edit'
   root 'homes#top'
   devise_for :admins
   devise_for :customers
