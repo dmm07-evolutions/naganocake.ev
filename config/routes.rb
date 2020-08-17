@@ -1,23 +1,39 @@
 Rails.application.routes.draw do
-  get 'orders/thanks'
-  get 'orders/histry_index'
-  get 'orders/histry_show'
-  root 'homes#top'
-  devise_for :admins
-  devise_for :customers
-  get "homes/about" => "homes#about"
-  resources :orders, only:[:new, :create, :index]
-  # itemsのルーティング
-  resources :items, only: [:index, :show]
-  # cart_itemsのルーティング
-  resources :cart_items, only: [:index, :create, :destroy]
-  resources :ordered_item,only:[:index, :create, :edit, :show]
-  patch "cart_items/:id" => "cart_items#quantity"
-  delete "cart_items/destroy_all" => "cart_items#destroy_all"
 
 
-  resources :shipping_addresses, only: [:index, :edit]
-  resources :genres, only: [:index, :edit]
+  devise_for :admins, controllers: {
+    sessions: 'admins/sessions'
+  }
+  devise_for :customers, controllers: {
+    sessions: 'customers/sessions',
+    passwords: 'customers/passwords',
+    registrations: 'customers/registrations'
+  }
+
+  scope module: :end_user do
+    root 'homes#top'
+    get 'homes/about' => 'end_user/homes#about'
+    resource :customers, only: [:show, :edit, :update]
+    get 'customers/exit' => 'customers#exit_page'
+    patch 'customers/exit' => 'customers#exit'
+    resources :items, only: [:index, :show]
+    resources :cart_items, only: [:index, :create, :destroy]
+    patch 'cart_items/:id' => 'end_user/cart_items#quantity'
+    delete 'cart_items/destroy_all' => 'end_user/cart_items#destroy_all'
+    resources :shipping_addresses, only: [:index, :create, :edit, :update, :destroy]
+    resources :orders, only: [:new, :create, :show]
+    get 'orders/thanks' => 'orders#thanks'
+    get 'orders/history' => 'orders#history_index'
+    get 'orders/history/:id' => 'orders#history_show'
+  end
+
+  namespace :admin do
+    get 'homes/top' => 'homes#top'
+    resources :customers, only: [:index, :show, :edit, :update]
+    resources :items, only: [:new, :create, :index, :show, :edit, :update]
+    resources :orders, only: [:index, :show]
+    resources :genres, only: [:index, :edit, :create, :update]
+  end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
