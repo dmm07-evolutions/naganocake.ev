@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ながのcake</title>
+    <title>ながのCAKE</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -41,7 +41,7 @@
           <!-- ログイン前にadminの商品一覧が見れるのは危険？なので、customerの方を表示 -->
           <li><%= link_to items_path do %> 商品一覧<% end %></li>
           <!-- adminは新規登録がないため、customerの新規登録画面（sign_up）に飛ぶ -->
-          <li><%= link_to items_path do %>新規登録<% end %></li>
+          <li><%= link_to new_customer_registration_path do %>新規登録<% end %></li>
           <!-- adminのログイン画面に遷移させたほうがいい？？ -->
           <li><%= link_to new_customer_session_path do %>ログイン<% end %></li>
       </ul>
@@ -54,14 +54,21 @@
     <%= yield %>
 </div>
 
-<footer>
-        <div class="container">
-        <div class="row">
-          <div class="col-xs-3 col-xs-offset-9">
-          </div>
-        </div>
-      </div>
-</footer>
+<% if customer_signed_in? %>
+          <footer class="footer">
+            <div class="container">
+            <div class="row">
+            </div>
+            </div>
+           </footer>
+       <% else %>
+           <footer>
+             <div class="container">
+             <div class="row">
+             </div>
+             </div>
+           </footer>
+<% end %>
 
 </body>
 </html>
