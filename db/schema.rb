@@ -25,9 +25,9 @@ ActiveRecord::Schema.define(version: 2020_08_18_014911) do
   end
 
   create_table "crat_items", force: :cascade do |t|
-    t.integer "customer_id", null: false
-    t.integer "item_id", null: false
-    t.integer "quantity", null: false
+    t.integer "customer_id"
+    t.integer "item_id"
+    t.integer "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -43,10 +43,10 @@ ActiveRecord::Schema.define(version: 2020_08_18_014911) do
   end
 
   create_table "items", force: :cascade do |t|
-    t.integer "genres_id", null: false
-    t.string "name", null: false
-    t.integer "price", null: false
-    t.boolean "status", null: false
+    t.integer "genres_id"
+    t.string "name"
+    t.integer "price"
+    t.boolean "status"
     t.text "explanation"
     t.string "img_id"
     t.datetime "created_at", null: false
