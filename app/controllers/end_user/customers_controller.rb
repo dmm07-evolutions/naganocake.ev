@@ -1,11 +1,16 @@
 class EndUser::CustomersController < ApplicationController
   def show
-  	@customers = Customer.find_by(current_customer)
+  	@customer = Customer.find(current_customer.id)
   end
 
-  def edit
+  def edit_page
   end
 
-  def exit_page
+  def exit
+  	@customer = Customer.find(current_customer.id)
+  	#@customer.is_deleted = "true"
+  	redirect_to root_path
   end
+
+
 end
