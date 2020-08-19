@@ -12,8 +12,10 @@ Rails.application.routes.draw do
 
   scope module: :end_user do
     root 'homes#top'
+
     get 'homes/about' => 'homes#about'
     resource :customers, only: [:show, :edit, :update]
+
     get 'customers/exit' => 'customers#exit_page'
     patch 'customers/exit' => 'customers#exit'
     resources :items, only: [:index, :show]
