@@ -4,28 +4,40 @@
 
 <div class="container">
 	<%= render 'shared/genre'%>
-				<div class="col-md-10">
+				<div class="col-md-10　col-md-offset-3">
 
-					<div>
-						<h1>いちごのショートケーキです</h1>
+					<div class="text-right">
 						<div>
-						<p>商品説明です商品説明です商品説明です商品説明です</p>
-						<p>商品説明です商品説明です商品説明です商品説明です</p>
-						<p>商品説明です商品説明です商品説明です商品説明です</p>
-						<p>商品説明です商品説明です商品説明です商品説明です</p>
+							<h4>いちごのショートケーキです</h4>
+						</div>
+						<div class="col-md-5">
+							<p></p>
+					 　　</div>
+						<div class="col-md-5 col-md-offsite-3">
+							<p>商品説明です商品説明です商品説明です商品説明です<br>
+							商品説明です商品説明です商品説明です商品説明です<br>
+							商品説明です商品説明です商品説明です商品説明です<br>
+							商品説明です商品説明です商品説明です商品説明です</p>
+					 　　</div>
+					 <div>
+					 	<h4>¥550<small>(税込)</small>
 					 </div>
-					 <spana><h4>¥550</h4>（税込み）</spana>
 		         </div>
-			　　　<div class="dropdown">
-					  <a id="dLabel" data-target="#" href="http://example.com/" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-					    Dropdown trigger
-					    <span class="caret"></span>
-					  </a>
-
-					  <ul class="dropdown-menu" aria-labelledby="dLabel">
-					    ...
-				  　　</ul>
+			　　　<div class="text-right">
+						<input type="text" name="a" list="cake" placeholder="個数選択" autocomplete="off" class="prymary">
+	 					<datalist id="cake">
+					    <option value="１個">
+					    <option value="２個">
+					    <option value="３個">
+					    <option value="４個">
+					    <option value="５個">
+					    <option value="６個">
+					    <option value="７個">
+					    <option value="８個">
+					    <option value="９個">
+					  </datalist>
+					</form>
 				　</div>
-				　 <!--  <link_to _path,class: "glyphicon glyphicon-wrench" > -->
+				　<!-- <= submit "カートに入れる", class: "btn btn-sm btn-primary" > -->
 		　　　　</div>
 </div>
