@@ -2,6 +2,14 @@
 <div class="container">
 	<div class="row">
 		<%= render "shared/genre"%>
+
+				 <div class="col-md-10 col-md-offsite-3">
+					<div class="text-left col-md-10 col-md-offsite-3">
+						<p>ようこそNganoCakeへ！<br>
+						このサイトはケーキ販売のECサイトになります<br>
+					     会員でない方も商品の一覧はできますが、<br>
+						   購入には会員登録が必要になります。</p>
+
 				<div class="col-md-10">
 
 
@@ -10,12 +18,13 @@
 						<p>このサイトはケーキ販売のECサイトになります</p>
 						<p>会員でない方も商品の一覧はできますが、</p>
 						<p>購入には会員登録が必要になります。</p>
+
 					</div>
-<!-- 					真ん中にback-groundimage
- -->			   </div>
+<!-- 					真ん中にback-groundimage-->
+
 					 <div class="col-md-10">
 						<h1>オススメ商品</h1>
-							<div>
+							<div class="col-md-2">
 							     <p>imgeimgeimgeimge</p>
 							     <p>imgeimgeimgeimge</p>
 							     <p>imgeimgeimgeimge</p>
@@ -24,7 +33,7 @@
 							       <p><= 0,000000></p>
 								   <p><%=   %></p><!-- user.name -->
 						    </div>
-						    <div>
+						    <div class="col-md-2">
 							     <p>imgeimgeimgeimge</p>
 							     <p>imgeimgeimgeimge</p>
 							     <p>imgeimgeimgeimge</p><!--  <th>< attachment_image_tag ></th> -->
@@ -33,7 +42,7 @@
 							       <p><0,000000></p>
 								   <p><%=   %></p><!-- user.name -->
 						    </div>
-						    <div>
+						    <div class="col-md-2">
 							     <p>imgeimgeimgeimge</p>
 							     <p>imgeimgeimgeimge</p>
 							     <p>imgeimgeimgeimge</p><!--  <th>< attachment_image_tag ></th> -->
@@ -42,7 +51,7 @@
 							       <p><0,000000></p>
 								   <p><%=   %></p><!-- user.name -->
 						    </div>
-						    <div>
+						    <div class="col-md-2">
 							     <p>imgeimgeimgeimge</p>
 							     <p>imgeimgeimgeimge</p>
 							     <p>imgeimgeimgeimge</p><!--  <th>< attachment_image_tag ></th> -->
@@ -50,8 +59,8 @@
 							      <p>order_name</p>
 							       <p><0,000000></p>
 								   <p><%=   %></p><!-- user.name -->
+								   <%=link_to "もっと見る >",items_path , class:"btn btn-primary"%>
 						    </div>
-				        <!--  <link_to _path,class: "glyphicon glyphicon-wrench" > -->
-		  </div>
+		             </div>
 	</div>
 </div>
