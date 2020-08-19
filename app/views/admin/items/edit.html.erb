@@ -1,2 +1,58 @@
-<h1>Admin::Items#edit</h1>
-<p>Find me in app/views/admin/items/edit.html.erb</p>
+	<div class="row">
+		<h3>商品編集</h3>
+		<div class="col-md-4">
+		 <div class="field">
+		   <%= f.label :image %>
+		   <%= f.attachment_field :image, class: "item_image" %>
+	     </div>
+		</div>
+		<div class="col-md-4">
+		 <div class="field">
+		 <%= f.label :name, "商品名" %>
+		 <%= f.text_field :name, class: "name" %>
+    </div>
+
+		<div class="field">
+		 <%= f.label :introduction, "商品説明" %>
+		 <%= f.text_field :introduction, class: "introduction" %>
+    </div>
+
+		 <div class="dropdown">
+		  <%= f.label :genre, "ジャンル" %>
+            <button type="button" id="dropdown1"
+            class="btn btn-secondary dropdown-toggle"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false">
+            --選択してください--
+            </button>
+          <div class="dropdown-menu" aria-labelledby="dropdown1">
+          <a class="dropdown-item" href="#">Menu #1</a>
+          <a class="dropdown-item" href="#">Menu #2</a>
+          <a class="dropdown-item" href="#">Menu #3</a>
+         </div>
+	     </div>
+
+	     <div class="field">
+		 <%= f.label :price, "税抜価格" %>
+		 <%= f.text_field :introduction, class: "introduction" %>円
+
+         <div class="dropdown">
+         　<%= f.label :status, "販売ステータス" %>
+          <button type="button" id="dropdown1"
+          class="btn btn-secondary dropdown-toggle"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false">
+           --選択してください--
+         </button>
+         <div class="dropdown-menu" aria-labelledby="dropdown1">
+          <a class="dropdown-item" href="#">販売中</a>
+          <a class="dropdown-item" href="#">売り切れ</a>
+         </div>
+         </div>
+		</div>
+		</div>
+
+		<%= f.submit "変更を保存", class: "btn btn-primary col-md-3" %>
+  </div>
