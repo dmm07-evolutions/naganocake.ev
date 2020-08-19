@@ -4,8 +4,8 @@
 		<h3>商品一覧</h3>
 		<div class="col-md-4">
 		 <div class="field">
-		   <%= f.label :img_id, "商品画像" %>
-		   <%= f.attachment_field :img_id, class: "img_id" %>
+		   <%= f.label :img, "商品画像" %>
+		   <%= f.attachment_field :img, class: "img" %>
 	     </div>
 		</div>
 		<div class="col-md-4">
@@ -33,6 +33,6 @@
 		</div>
 		</div>
 
-		<%= f.submit "新規登録", class: "btn btn-primary col-md-3" %>
+		<%= f.submit "変更を保存する", class: "btn btn-primary col-md-3" %>
 		<% end %>
 	</div>

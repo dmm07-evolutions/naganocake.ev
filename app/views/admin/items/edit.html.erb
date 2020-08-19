@@ -1,58 +1,37 @@
-	<div class="row">
-		<h3>商品編集</h3>
-		<div class="col-md-4">
-		 <div class="field">
-		   <%= f.label :image %>
-		   <%= f.attachment_field :image, class: "item_image" %>
-	     </div>
-		</div>
-		<div class="col-md-4">
-		 <div class="field">
-		 <%= f.label :name, "商品名" %>
-		 <%= f.text_field :name, class: "name" %>
+<div class="container">
+  <div class="row">
+    <%= form_for(@item,url:admin_item_path, html: {method: :patch}) do |f| %>
+    <h3>商品一覧</h3>
+    <div class="col-md-4">
+     <div class="field">
+       <%= f.label :img, "商品画像" %>
+       <%= f.attachment_field :img, class: "img" %>
+       </div>
     </div>
+    <div class="col-md-4">
+     <div class="field">
+     <%= f.label :name, "商品名" %>
+     <%= f.text_field :name, class: "name" %>
 
-		<div class="field">
-		 <%= f.label :introduction, "商品説明" %>
-		 <%= f.text_field :introduction, class: "introduction" %>
-    </div>
+    <div class="field">
+     <%= f.label :explanation, "商品説明" %>
+     <%= f.text_field :explanation, class: "explanation" %>
 
-		 <div class="dropdown">
-		  <%= f.label :genre, "ジャンル" %>
-            <button type="button" id="dropdown1"
-            class="btn btn-secondary dropdown-toggle"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false">
-            --選択してください--
-            </button>
-          <div class="dropdown-menu" aria-labelledby="dropdown1">
-          <a class="dropdown-item" href="#">Menu #1</a>
-          <a class="dropdown-item" href="#">Menu #2</a>
-          <a class="dropdown-item" href="#">Menu #3</a>
-         </div>
-	     </div>
+     <div class="dropdown">
+      <%= f.label :genre, "ジャンル" %>
+           <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい" %>
+       </div>
 
-	     <div class="field">
-		 <%= f.label :price, "税抜価格" %>
-		 <%= f.text_field :introduction, class: "introduction" %>円
+       <div class="field">
+     <%= f.label :price, "税抜価格" %>
+     <%= f.text_field :price, class: "price" %>円
 
          <div class="dropdown">
          　<%= f.label :status, "販売ステータス" %>
-          <button type="button" id="dropdown1"
-          class="btn btn-secondary dropdown-toggle"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false">
-           --選択してください--
-         </button>
-         <div class="dropdown-menu" aria-labelledby="dropdown1">
-          <a class="dropdown-item" href="#">販売中</a>
-          <a class="dropdown-item" href="#">売り切れ</a>
+          <%= f.select :status, [["販売中", true],["売り切れ", false]], include_blank: "選択して下さい" %>
          </div>
-         </div>
-		</div>
-		</div>
+    </div>
+    </div>
 
-		<%= f.submit "変更を保存", class: "btn btn-primary col-md-3" %>
+		<%= f.submit "変更を保存", class: "btn btn-primary col-md-3" %><% end %>
   </div>
