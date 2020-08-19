@@ -1,19 +1,19 @@
 	<div class="row">
 		<h3>商品詳細</h3>
 		<div class="col-md-4">
-			<%= @item.image %>
+			<%= @item.name %>    <!--   -->
 		<div class="col-md-4">
 			<p>商品名</p>
 			<%= @item.name %>
 
 			<p>商品説明</p>
-			<%= @item.introduction %>
+			<%= @item.explanation %>
 
 			<p>ジャンル</p>
 			<%= @item.genre %>
 
 			<p>税込価格（税抜価格）</p>
-			<%= @item.price, {(@item.price*1.08)} %>
+			<%= " (#{@item.price})" %>
 
 			<p>販売ステータス</p>
 			<%= @item.status %>

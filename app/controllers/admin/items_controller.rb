@@ -18,6 +18,9 @@ class Admin::ItemsController < ApplicationController
   def create
   	@item = Item.new(item_params)
   	@item.save
+    @item.errors.full_messages.each do |msg|
+    p msg
+    end
   	redirect_to admin_items_path
   end
 
@@ -33,7 +36,7 @@ class Admin::ItemsController < ApplicationController
 private
 
   def item_params
-    params.require(:item).permit(:img, :name, :explanation, :genre, :price, :status)
+    params.require(:item).permit(:img, :name, :explanation, :genre_id, :price, :status)
   end
 
 end

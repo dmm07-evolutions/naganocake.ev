@@ -19,7 +19,7 @@
 
 		 <div class="dropdown">
 		  <%= f.label :genre, "ジャンル" %>
-           <%= f.collection_select :genres_id, Genre.all, :id, :name, include_blank: "選択して下さい" %>
+           <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい" %>
 	     </div>
 
 	     <div class="field">
@@ -28,7 +28,7 @@
 
          <div class="dropdown">
          　<%= f.label :status, "販売ステータス" %>
-          <%= f.select :status, [["販売中", "true"],["売り切れ", "false"]], include_blank: "選択して下さい" %>
+          <%= f.select :status, [["販売中", true],["売り切れ", false]], include_blank: "選択して下さい" %>
          </div>
 		</div>
 		</div>
