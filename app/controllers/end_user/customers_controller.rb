@@ -1,11 +1,15 @@
 class EndUser::CustomersController < ApplicationController
+#マイページ
   def show
+    #マイページにログイン中のユーザーの情報を渡す
   	@customer = Customer.find(current_customer.id)
   end
 
-  def edit_page
+#退会手続きページ
+  def exit_page
   end
 
+#退会処理
   def exit
   	@customer = Customer.find(current_customer.id)
   	@customer.is_deleted = true
