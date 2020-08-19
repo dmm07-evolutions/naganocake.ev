@@ -8,4 +8,5 @@ class Customer < ApplicationRecord
   # cart_itemsのアソシエーション
   has_many :cart_items, dependent: :destroy
 
+
 end
