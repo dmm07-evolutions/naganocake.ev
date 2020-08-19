@@ -5,6 +5,7 @@ class Item < ApplicationRecord
 	has_many :cart_items, dependent: :destroy
 	has_many :ordered_items, dependent: :destroy
 	attachment :img_id
+	attachment :img
 
 
 	def status_text
@@ -13,9 +14,5 @@ class Item < ApplicationRecord
 		else
 			"売り切れ"
 		end
-	end
-
-	def price_tax
-		price = price * 1.08
 	end
 end
