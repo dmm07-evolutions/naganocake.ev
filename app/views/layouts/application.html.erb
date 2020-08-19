@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>NaganocakeEv</title>
+    <title>ながのCAKE</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,10 +10,74 @@
   </head>
 
   <body>
+
+    <header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <nav class="nav navbar-nav navbar-left">
+      <span class="white">ながのCake</span>
+    </nav>
+  <% if customer_signed_in? %>
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to customers_path(current_customer) do %>マイページ<% end %></li>
+          <li><%= link_to items_path do %>商品一覧<% end %></li>
+          <li><%= link_to cart_items_path do %>カート<% end %></a></li>
+          <li><%= link_to destroy_customer_session_path do %>ログアウト<% end %></li>
+      </ul>
+    </nav>
+ <% elsif admin_signed_in? %>
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to admin_items_path do %>商品一覧<% end %></li>
+          <li><%= link_to admin_customers_path do %>会員一覧<% end %></li>
+          <li><%= link_to admin_orders_path do %>注文履歴一覧<% end %></li>
+          <li><%= link_to admin_genres_path do %>ジャンル一覧<% end %></li>
+          <li><%= link_to destroy_admin_session_path do %>ログアウト<% end %></li>
+      </ul>
+    </nav>
+ <% else %>
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to homes_about_path do %>About<% end %></li>
+          <!-- ログイン前にadminの商品一覧が見れるのは危険？なので、customerの方を表示 -->
+          <li><%= link_to items_path do %> 商品一覧<% end %></li>
+          <!-- adminは新規登録がないため、customerの新規登録画面（sign_up）に飛ぶ -->
+          <li><%= link_to new_customer_registration_path do %>新規登録<% end %></li>
+          <!-- adminのログイン画面に遷移させたほうがいい？？ -->
+          <li><%= link_to new_customer_session_path do %>ログイン<% end %></li>
+      </ul>
+    </nav>
+  <% end %>
+</div>
+</header>
+
+<div class='body'>
+    <%= yield %>
+</div>
+
+<% if customer_signed_in? %>
+          <footer class="footer">
+            <div class="container">
+            <div class="row">
+            </div>
+            </div>
+           </footer>
+       <% else %>
+           <footer>
+             <div class="container">
+             <div class="row">
+             </div>
+             </div>
+           </footer>
+<% end %>
+
+</body>
+
     <div class="container">
 
     <%= yield %>
 
     </div>
   </body>
+
 </html>
