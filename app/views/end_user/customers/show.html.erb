@@ -1,48 +1,49 @@
-<div class="container">
+
 	<div class="row">
-		<div class="col-md-12">
+		<div class="col-md-offset-1 col-md-8">
 			<h3>マイページ</h3>
-			<p>登録情報</p>
 			<span>
+				登録情報
 				<%= link_to "編集する", edit_customer_registration_path, class:"btn btn-primary" %>
 				<%= link_to "パスワードを変更する", "", class:"btn btn-primary" %>
 			</span>
-		</div>
-	</div>
-	<div class="row">
-			<!-- 登録情報 -->
-			<table class="table-bordered">
-				<tr>
-					<th class="col-md-2">氏名</th>
-					<td class="col-md-5"><%= "#{@customer.first_name} #{@customer.last_name}" %></td>
-				</tr>
-				<tr>
-					<th class="col-md-2">カナ</th>
-					<td class="col-md-5"><%= "#{@customer.first_name_kana} #{@customer.last_name_kana}" %></td>
-				</tr>
-				<tr>
-					<th class="col-md-2">郵便番号</th>
-					<td class="col-md-5"><%= @customer.postcode %></td>
-				</tr>
-				<tr>
-					<th class="col-md-2">住所</th>
-					<td class="col-md-5"><%= @customer.address %></td>
-				</tr>
-				<tr>
-					<th class="col-md-2">電話番号</th>
-					<td class="col-md-5"><%= @customer.phone_number %></td>
-				</tr>
-				<tr>
-					<th class="col-md-2">メールアドレス</th>
-					<td class="col-md-5"><%= @customer.email %></td>
-				</tr>
-			</table>
-			<span>配送先<%= link_to "一覧を見る", shipping_addresses_path, class:"btn btn-primary" %></span><br>
-			<span>注文履歴<%= link_to "一覧を見る", orders_history_path, class:"btn btn-primary" %></span><br>
+			<div class="row pt-10">
+				<!-- 登録情報 -->
+				<table class="table-bordered">
+					<therd>
+						<tr>
+							<th class="col-md-2">氏名</th>
+							<td class="col-md-5"><%= @customer.full_name %></td>
+						</tr>
+						<tr>
+							<th class="col-md-2">カナ</th>
+							<td class="col-md-5"><%= @customer.full_name_kana %></td>
+						</tr>
+						<tr>
+							<th class="col-md-2">郵便番号</th>
+							<td class="col-md-5"><%= @customer.postcode %></td>
+						</tr>
+						<tr>
+							<th class="col-md-2">住所</th>
+							<td class="col-md-5"><%= @customer.address %></td>
+						</tr>
+						<tr>
+							<th class="col-md-2">電話番号</th>
+							<td class="col-md-5"><%= @customer.phone_number %></td>
+						</tr>
+						<tr>
+							<th class="col-md-2">メールアドレス</th>
+							<td class="col-md-5"><%= @customer.email %></td>
+						</tr>
+					</therd>
+				</table>
+				<span>配送先<%= link_to "一覧を見る", shipping_addresses_path, class:"btn btn-primary" %></span><br>
+				<span>注文履歴<%= link_to "一覧を見る", orders_history_path, class:"btn btn-primary" %></span><br>
 
 
-			<%= link_to "ログアウト仮", destroy_customer_session_path, method: :delete, class:"btn btn-danger" %>
+				<%= link_to "ログアウト仮", destroy_customer_session_path, method: :delete, class:"btn btn-danger" %>
+			</div>
 		</div>
 	</div>
-</div>
+
 
