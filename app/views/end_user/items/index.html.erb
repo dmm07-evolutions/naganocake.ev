@@ -2,66 +2,37 @@
 	<div class="row">
 　　　<%= render 'shared/genre'%>
 		 <div class="col-md-10 col-md-offset-3">
-					<% unless genre_serch?　%>
-						<h1>商品一覧(全件)</h1>
-			            <div class="col-md-2">
-			                　　<% @items.each do |item| %>
-				                   <table>
-				                     <tbody>
-					                     <tr>
-					                     	<td><%=attachment_image_tag(item.imag,fallback:"noimg.jpg",size:"50*50") %></td>
-					                         <td><%= item.name %></td>
-					                         <td><%= item.genre %></td>
-					                   </tr>
-				                      </tbody>
-				                    </table>
-				                <% end %>
-				         </div>
-						<h1>オススメ商品(全件)</h1>
-			            <div class="col-md-2">
-			                　　<% @items.each do |item| %>
-				                   <table>
-				                     <tbody>
-					                     <tr>
-					                     	<td><%=attachment_image_tag(item.imag,fallback:"noimg.jpg",size:"50*50") %></td>
-					                         <td><%= item.name %></td>
-					                         <td><%= item.genre %></td>
-					                   </tr>
-				                      </tbody>
-				                    </table>
-				                <% end %>
-				         </div>
-			        <% else %>
-						<h1>ジャンル一覧(全件)</h1>
-			            <div class="col-md-2">
-			                　　<% @items.each do |item| %>
-				                   <table>
-				                     <tbody>
-					                     <tr>
-					                     	<td><%=attachment_image_tag(item.imag,fallback:"noimg.jpg",size:"50*50") %></td>
-					                         <td><%= item.name %></td>
-					                         <td><%= item.genre %></td>
-					                   </tr>
-				                      </tbody>
-				                    </table>
-				                <% end %>
-						<h1>ジャンル商品(全件)</h1>
-			            <div class="col-md-2">
-			                　　<% @items.each do |item| %>
-				                   <table>
-				                     <tbody>
-					                     <tr>
-					                     	<td><%=attachment_image_tag(item.imag,fallback:"noimg.jpg",size:"50*50") %></td>
-					                         <td><%= item.name %></td>
-					                         <td><%= item.genre %></td>
-					                   </tr>
-				                      </tbody>
-				                    </table>
-				                <% end %>
-				         </div>
+				<!--	unless genre_serch?-->
+			<h1>商品一覧(全件)</h1>
+                　　<% @items.each do |i| %>
+	                   <table class="table table-hover table-inverse ">
+	                     <tbody>
+		                     <tr>
+		                     	<td><%=attachment_image_tag(i,:img,:fill,100,100,fallback:"noimg.jpg",size:"100x100") %></td>
+		                         <td><%= i.name %></td>
+		                         <td><%= i.price %></td>
+		                   </tr>
+	                      </tbody>
+	                    </table>
+	                </div>
+	            <%else%>
+	        <h1>ジャンル一覧(全件)</h1>
+                　　<% @items.each do |i| %>
+	                   <table >
+	                     <tbody>
+		                     <tr>
+		                     	<td><%=attachment_image_tag(i,:img,:fill,100,100,fallback:"noimg.jpg",size:"100x100") %></td>
+		                         <td><%= i.name %></td>
+		                         <td><%= i.price %></td>
+		                   </tr>
+	                      </tbody>
+	                    </table>
+	                <% end %>
+	               </div>
 
-          			<% end %>
-            </div>
+	            <% end %>
+	         </div>
+        <% else %>
          </div>
 	</div>
 </div>
