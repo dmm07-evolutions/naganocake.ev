@@ -1,2 +1,23 @@
-<h1>EndUser::ShippingAddresses#index</h1>
-<p>Find me in app/views/end_user/shipping_addresses/index.html.erb</p>
+<div class="row">
+	<div class="col-md-5 md-offset-1">
+		<h1>配送先登録/一覧</h1>
+
+		<div class="form-group">
+			<%= form_for @shipping_address, url: shipping_addresses_path do |f| %>
+			<div class="col-md-offset-1 col-md-11">
+		        <%= f.label :postcode, "郵便番号（ハイフンなし）" %>
+		        <%= f.text_field :postcode %>
+		    </div>
+		    <div class="col-md-offset-1 col-md-11">
+		        <%= f.label :address, "住所" %>
+		        <%= f.text_field :address %>
+		    </div>
+		    <div class="col-md-offset-1 col-md-11">
+		        <%= f.label :destination, "宛先" %>
+		        <%= f.text_field :destination %>
+		    </div>
+		    <% end %>
+		</div>
+	</div>
+</div>
+
