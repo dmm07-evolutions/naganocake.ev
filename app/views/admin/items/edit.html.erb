@@ -12,10 +12,12 @@
      <div class="field">
      <%= f.label :name, "商品名" %>
      <%= f.text_field :name, class: "name" %>
+   </div>
 
     <div class="field">
      <%= f.label :explanation, "商品説明" %>
      <%= f.text_field :explanation, class: "explanation" %>
+   </div>
 
      <div class="dropdown">
       <%= f.label :genre, "ジャンル" %>
@@ -25,6 +27,7 @@
        <div class="field">
      <%= f.label :price, "税抜価格" %>
      <%= f.text_field :price, class: "price" %>円
+   </div>
 
          <div class="dropdown">
          　<%= f.label :status, "販売ステータス" %>
@@ -33,5 +36,7 @@
     </div>
     </div>
 
-		<%= f.submit "変更を保存", class: "btn btn-primary col-md-3" %><% end %>
+<div class="col-xs-offset-9 col-md-3">
+		<%= f.submit "変更を保存", class: "btn btn-primary" %><% end %>
+  </div>
   </div>
