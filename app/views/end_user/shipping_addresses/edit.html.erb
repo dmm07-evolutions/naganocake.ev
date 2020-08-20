@@ -1,2 +1,32 @@
-<h1>EndUser::ShippingAddresses#edit</h1>
-<p>Find me in app/views/end_user/shipping_addresses/edit.html.erb</p>
+<div class="row">
+	<div class="col-md-7 md-offset-1">
+		<h3>配送先編集</h3>
+
+        <!--       編集フォーム         -->
+		<div class="form_group">
+			<%= form_for(@shipping_address, url:"/shipping_addresses/#{@shipping_address.id}", html: {method: "patch"}) do |f| %>
+			    <!--   郵便番号　編集      -->
+			    <div class="col-md-offset-1">
+		            <%= f.label :postcode, "郵便番号（ハイフンなし）" %>
+		            <%= f.text_field :postcode %>
+		        </div>
+
+                <!--       住所　編集      -->
+		        <div class="col-md-offset-1">
+		            <%= f.label :address, "住所" %>
+		            <%= f.text_field :address, class: "col-md-offset-3" %>
+		        </div>
+
+                <!--       宛名　編集      -->
+		        <div class="col-md-offset-1">
+		            <%= f.label :destination, "宛名" %>
+		            <%= f.text_field :destination, class: "col-md-offset-3" %>
+		        </div>
+
+                <!--     変更内容　保存     -->
+		        <%= f.submit '編集する', class: "btn btn-info col-md-offset-10" %>
+			<% end %>
+		</div>
+	</div>
+</div>
+
