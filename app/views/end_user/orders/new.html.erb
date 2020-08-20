@@ -1,2 +1,29 @@
-<h1>EndUser::Orders#new</h1>
-<p>Find me in app/views/end_user/orders/new.html.erb</p>
+<div class="container">
+	<div class="row">
+		<h3>注文情報入力</h3>
+
+      <%= form_for(@order, url: orders_path, html: {method: :post}) do |f| %>
+		<div class="col">
+			<h3 class="lead">支払方法</h3>
+			<label><%= f.radio_button :payment_method, 0 %>クレジットカード</label>
+			<label><%= f.radio_button :payment_method, 1 %>銀行振り込み</label>
+		</div>
+
+		<div class="col">
+			<div class="row">
+			 <h3 class="lead">お届け先</h3>
+			 <div class="col-md-8">
+			 	<label><%= f.radio_button :address_select, 0 %>ご自身の住所</label>
+			 	<%= @customer.postcode %><%= @customer.address %><%= @customer.first_name %><%= @customer.last_name %>
+ 			 </div>
+ 			 <div class="col-md-8">
+ 			 	<label><%= f.radio_button :address_select, 1 %>登録済住所から選択</label>
+ 			 	<%= f.collection_select :customer_id, current_user.@shipping_address.all, :id, :name, include_blank: "選択して下さい" %>
+ 			 </div>
+
+		    </div>
+		</div>
+	  <% end %>
+	</div>
+</div>
+
