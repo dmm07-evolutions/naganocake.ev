@@ -1,9 +1,10 @@
 class EndUser::HomesController < ApplicationController
   def top
-  	@item = Item.find(params)
+  	@items_all =  Item.all
   end
 
   def about
 
   end
+
 end
