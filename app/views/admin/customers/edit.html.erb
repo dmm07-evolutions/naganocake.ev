@@ -1,14 +1,14 @@
 <div class="row">
-	<div class="col-md-offset-1 col-md-3">
-		<%= "#{@customer.first_name}#{@customer.last_name}の会員詳細" %>
+	<div class="col-md-offset-1 col-md-6">
+		<h2><%= "#{@customer.first_name}#{@customer.last_name}の会員情報編集" %></h2>
 	</div>
 </div>
-<div class="row">
+<div class="row pt-30">
 	<div class="col-md-offset-2 col-md-8">
 		<%= form_for admin_customer_path, html: { method: :patch } do |f| %>
 		<table>
 			<tr>
-				<th><%= f.label "氏名" %></th>
+				<th class="col-md-2"><%= f.label "氏名" %></th>
 				<td>
 					<div class="form-group form-inline">
 						<%= f.text_field :first_name, class:"form-control" %>
@@ -17,7 +17,7 @@
 				</td>
 			</tr>
 			<tr>
-				<th><%= f.label "フリガナ" %></th>
+				<th class="col-md-2"v><%= f.label "フリガナ" %></th>
 				<td>
 					<div class="form-group form-inline">
 						<%= f.text_field :first_name_kana, class:"form-control" %>
@@ -26,38 +26,50 @@
 				</td>
 			</tr>
 			<tr>
-				<th><%= f.label "郵便番号" %></th>
+				<th class="col-md-2"><%= f.label "郵便番号" %></th>
 				<td>
+					<div class="form-group">
 					<%= f.text_field :postcode, class:"form-control" %>
+					</div>
 				</td>
 			</tr>
 			<tr>
-				<th><%= f.label "住所" %></th>
+				<th class="col-md-2"><%= f.label "住所" %></th>
 				<td>
+					<div class="form-group">
 					<%= f.text_field :address, class:"form-control" %>
+					</div>
 				</td>
 			</tr>
 			<tr>
-				<th><%= f.label "電話番号" %></th>
+				<th class="col-md-2"><%= f.label "電話番号" %></th>
 				<td>
+					<div class="form-group">
 					<%= f.text_field :phone_number, class:"form-control" %>
+					</div>
 				</td>
 			</tr>
 			<tr>
-				<th><%= f.label "メールアドレス" %></th>
+				<th class="col-md-2"><%= f.label "メールアドレス" %></th>
 				<td>
+					<div class="form-group">
 					<%= f.text_field :email, class:"form-control" %>
+					</div>
 				</td>
 			</tr>
 			<tr>
-				<th><%= f.label "会員ステータス" %></th>
+				<th class="col-md-2"><%= f.label "会員ステータス" %></th>
 				<td>
+					<div class="form-group">
 					<%= f.radio_button :is_deleted, true %>有効
 					<%= f.radio_button :is_deleted, false %>退会済み
+					</div>
 				</td>
 			</tr>
 		</table>
-		<%= f.submit "変更を保存する", class:"btn btn-primary" %>
+		<div class="pt-20">
+			<%= f.submit "変更を保存する", class:"btn btn-primary " %>
+		</div>
 		<% end %>
 	</div>
 </div>

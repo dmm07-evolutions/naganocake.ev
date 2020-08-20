@@ -1,28 +1,45 @@
 <div class="row">
-	<div class="col-md-offset-1 col-md-3">
-		<%= "#{@customer.first_name}#{@customer.last_name}の会員詳細" %>
+	<div class="col-md-offset-1 col-md-6">
+		<h2><%= "#{@customer.first_name}#{@customer.last_name}の会員詳細" %></h2>
 	</div>
 </div>
 <div class="row">
-	<div class="col-md-2">
-		<p>顧客ID</p>
-		<p>氏名</p>
-		<p>フリガナ</p>
-		<p>郵便番号</p>
-		<p>住所</p>
-		<p>電話番号</p>
-		<p>メールアドレス</p>
-	</div>
-	<div class="col-md-4">
-		<p><%= @customer.id %></p>
-		<p><%= "#{@customer.first_name}#{@customer.last_name}の会員詳細" %></p>
-		<p><%= "#{@customer.first_name_kana}#{@customer.last_name_kana}の会員詳細" %></p>
-		<p><%= @customer.postcode %></p>
-		<p><%= @customer.address %></p>
-		<p><%= @customer.phone_number %></p>
-		<p><%= @customer.email %></p>
-	</div>
-</div>
+	<div class="col-md-offset-1 col-md-6">
+		<table class="">
+			<therd>
+				<tr>
+					<th class="col-md-1 pt-20">顧客ID</th>
+					<td class="col-md-2"><%= @customer.id %><span class="btn btn-primary btn-xs"><%= @customer.is_status %></span></td>
+				</tr>
+				<tr>
+					<th class="col-md-1 pt-20">氏名</th>
+					<td class="col-md-2"><%= @customer.full_name %></td>
+				</tr>
+				<tr>
+					<th class="col-md-1 pt-20">フリガナ</th>
+					<td class="col-md-2"><%= @customer.full_name_kana %></td>
+				</tr>
+				<tr>
+					<th class="col-md-1 pt-20">郵便番号</th>
+					<td class="col-md-2"><%= @customer.postcode %></td>
+				</tr>
+				<tr>
+					<th class="col-md-1 pt-20">住所</th>
+					<td class="col-md-2"><%= @customer.address %></td>
+				</tr>
+				<tr>
+					<th class="col-md-1 pt-20">電話番号</th>
+					<td class="col-md-2"><%= @customer.phone_number %></td>
+				</tr>
+				<tr>
+					<th class="col-md-1 pt-20">メールアドレス</th>
+					<td class="col-md-2"><%= @customer.email %></td>
+				</tr>
+			</therd>
+		</table>
 		<%= link_to "編集する", edit_admin_customer_path, class:"btn btn-primary" %>
 		<%= link_to "注文履歴一覧を見る", orders_history_path, class:"btn btn-primary" %>
+	</div>
+</div>
+		
 
