@@ -24,10 +24,11 @@ Rails.application.routes.draw do
     patch 'cart_items/:id' => 'cart_items#quantity'
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
     resources :shipping_addresses, only: [:index, :create, :edit, :update, :destroy]
-    resources :orders, only: [:new, :create, :show]
     get 'orders/thanks' => 'orders#thanks'
     get 'orders/history' => 'orders#history_index'
     get 'orders/history/:id' => 'orders#history_show'
+    resources :orders, only: [:new, :create, :show]
+
   end
 
   namespace :admin do

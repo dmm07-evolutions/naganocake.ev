@@ -1,2 +1,28 @@
-<h1>EndUser::Orders#show</h1>
-<p>Find me in app/views/end_user/orders/show.html.erb</p>
+<div class="container">
+	<div class="row">
+		<h3>注文情報入力</h3>
+
+		<div class="col-md-offser-1 col-md-5">
+			<table class="table table-hover table-inverse">
+				<thead>
+				<tr>
+					<th>商品名</th>
+					<th>単価(税込み)</th>
+					<th>数量</th>
+					<th>小計</th>
+				</tr>
+				<tbody>
+					<% @ordered_items.each do |ordered_item| %>
+					<td><%= attachment_image_tag(ite, :img, :fill, 100, 50) %><%= ordered_item.name %></td>
+					<td><%= @price %></td>
+					<td><%= ordered_item.quantity %></td>
+					<td><%= @price * ordered_item.quantity %></td>
+					<% end %>
+				</tbody>
+			    </thead>
+		</div>
+
+		<div class="col-md-offset-2 col-md-3">
+		</div>
+	</div>
+</div>
