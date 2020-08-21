@@ -25,7 +25,7 @@
 			<%= form_for(@cart_item,url:cart_item_path(@item.id), html: {method: :post}) do |f| %>
 
 	 <div class="dropdown">
-			  <%= f.label :quantity, "個" %>
+			  <%= f.label :quantity, "(個数)" %>
 	           <%= f.select :quantity, [["1個",1],["2個",2],["3個",3],["4個",4],["5個",5],["6個",6],["7個",7],["8個",8],["9個",9 ]] ,include_blank: "選択して下さい" %>
 	           <%= f.submit "カートに入れる" %>
      </div>
