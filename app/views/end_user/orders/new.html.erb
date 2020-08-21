@@ -18,12 +18,31 @@
  			 </div>
  			 <div class="col-md-8">
  			 	<label><%= f.radio_button :address_select, 1 %>登録済住所から選択</label>
- 			 	<%= f.collection_select :customer_id, current_user.@shipping_address.all, :id, :name, include_blank: "選択して下さい" %>
+ 			 	<%= f.collection_select :address, @shipping_address, :id, :all_address, include_blank: "選択して下さい" %>
  			 </div>
 
-		    </div>
+ 			 <div class="col-md-8">
+ 			 	<label><%= f.radio_button :address_select, 2 %>新しいお届け先</label>
+ 			 	 <div class="field">
+                  <%= f.label :postal_code, "郵便番号（ハイフンなし）" %>
+                  <%= f.text_field :postal_code, class: "postal_code" %>
+                 </div>
+                 <div class="field">
+                  <%= f.label :address, "住所" %>
+                  <%= f.text_field :address, class: "address" %>
+                 </div>
+                 <div class="field">
+                  <%= f.label :name, "宛名" %>
+                  <%= f.text_field :name, class: "name" %>
+ 			     </div>
+ 			 </div>
+
+ 			 <div class="col-xs-offset-5 col-md-3">
+		<%= link_to "確認画面へ進む", order_path(:id), class: "btn btn-primary" %>
+           </div>
 		</div>
 	  <% end %>
 	</div>
+</div>
 </div>
 

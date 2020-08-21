@@ -5,4 +5,10 @@ class ShippingAddress < ApplicationRecord
 	# validates :postcode, presence: true
 	# validates :address, presennce: true
 	# validates :destination, presence: true
+
+
+	def all_address
+    "#{postcode} #{address} #{destination}"
+  end
+
 end

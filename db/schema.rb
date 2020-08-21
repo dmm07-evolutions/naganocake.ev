@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_19_074703) do
+ActiveRecord::Schema.define(version: 2020_08_20_080343) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -25,9 +25,9 @@ ActiveRecord::Schema.define(version: 2020_08_19_074703) do
   end
 
   create_table "crat_items", force: :cascade do |t|
-    t.integer "customer_id"
-    t.integer "item_id"
-    t.integer "quantity"
+    t.integer "customer_id", null: false
+    t.integer "item_id", null: false
+    t.integer "quantity", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -60,10 +60,10 @@ ActiveRecord::Schema.define(version: 2020_08_19_074703) do
   end
 
   create_table "items", force: :cascade do |t|
-    t.integer "genre_id"
-    t.string "name"
-    t.integer "price"
-    t.boolean "status"
+    t.integer "genre_id", null: false
+    t.string "name", null: false
+    t.integer "price", null: false
+    t.boolean "status", null: false
     t.text "explanation"
     t.string "img_id"
     t.datetime "created_at", null: false
@@ -92,7 +92,7 @@ ActiveRecord::Schema.define(version: 2020_08_19_074703) do
   end
 
   create_table "shipping_addresses", force: :cascade do |t|
-    t.integer "customer", null: false
+    t.integer "customer_id", null: false
     t.string "postcode", null: false
     t.string "address", null: false
     t.string "destination", null: false
