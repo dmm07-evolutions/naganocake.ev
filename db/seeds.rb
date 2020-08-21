@@ -17,6 +17,6 @@ Item.create!(
 	name:"チョコレートソース#{n+1}",
 	explanation:"美味しい美味しいチョコレート",
 	genre_id:1,
-	peice:350,
+	price:350,
 	)
 end
