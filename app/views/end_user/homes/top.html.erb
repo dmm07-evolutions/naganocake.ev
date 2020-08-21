@@ -1,34 +1,38 @@
 <div class="container">
 	<div class="row">
 		<%= render "shared/genre"%>
-				 <div class="col-md-10 col-md-offsite-2">
-					<div class="text-left col-md-10 col-md-offsite-3">
-						<p>ようこそNganoCakeへ！<br>
-						このサイトはケーキ販売のECサイトになります<br>
-					     会員でない方も商品の一覧はできますが、<br>
-						   購入には会員登録が必要になります。</p>
-				    </div>
+		 <div class="col-md-10 col-md-offsite-2">
+			<div class="text-left col-md-10 col-md-offsite-2">
+				<p>ようこそNganoCakeへ！<br>
+				このサイトはケーキ販売のECサイトになります<br>
+			     会員でない方も商品の一覧はできますが、<br>
+				   購入には会員登録が必要になります。</p>
+		    </div>
 <!-- 					真ん中にback-groundimage-->
-					 <div class="col-md-10">
-						<h1>オススメ商品</h1>
-							<div class="col-md-2">
-								<div class="col-md-2">
-			                　　<% @items_all.each do |i| %>
-				                   <table class="table table-hover table-inverse ">
-				                     <tbody>
-					                    <tr>
-					                     	<td><%=attachment_image_tag(i,:img ,:fill,100,100,fallback:"noimg.jpg",size:"100x100") %></td>
-					                         <td><%= i.name %></td>
-					                         <td><%= i.price %></td>
-					                         <td><%= i.genre.name %></td>
-					                   </tr>
-				                      </tbody>
-				                    </table>
-				                <% end %>
-				                <div text-raight>
-								   <%=link_to "もっと見る >",items_path , class:"btn btn-primary"%>
-								</div>
-						    </div>
-		             </div>
+			 <div class="col-md-10 col-md-offsite-2">
+				<h1>オススメ商品</h1>
+	                　　<div class="parent">
+	                	<% @items_all.each do |i| %>
+		                   <table class="child line-hight">
+		                     <tbody >
+			                    <tr class="line-hight">
+			                     	<td >
+				                     	 <%=attachment_image_tag(i,:img ,:fill,70,70,fallback:"noimg.jpg",size:"70x70") %>
+				                         <br><br>
+				                         <%= i.name %>
+				                         <br><br>
+				                         ¥<%= i.price %>
+			                        </td>
+			                   </tr>
+		                      </tbody>
+		                    </table>
+		                <% end %>
+		               </div>
+		               <div class="col-md-10 col-md-offsite-2">
+		                <div class="text-right">
+						   <%=link_to "もっと見る >",items_path , class:"btn btn-primary"%>
+						</div>
+				    </div>
+             </div>
 	</div>
 </div>

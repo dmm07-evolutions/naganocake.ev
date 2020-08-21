@@ -4,8 +4,36 @@
 
 <div class="container">
 	<%= render 'shared/genre'%>
-				<div class="col-md-10　col-md-offset-3">
+		<div class="col-md-10　col-md-offset-3">
 
+
+			<div class="text-right">
+				<div>
+					<h4>いちごのショートケーキです</h4>
+				</div>
+				<div class="col-md-5">
+					<td><%=attachment_image_tag(@item,:img,:fill,50,50,fallback:"noimg.jpg",size:"150x150") %></td>
+			 　　</div>
+				<div class="col-md-5 col-md-offsite-3">
+					<%=@item.explanation%>
+			 　　</div>
+			 <div>
+			 	<h4>¥<%=@item.price%><small>(税込)</small>
+			 </div>
+         </div>
+	　　　<div class="text-right">
+				<input type="text" name="a" list="cake" placeholder="個数選択" autocomplete="off" class="prymary">
+					<datalist id="cake">
+					    <option value="1個">
+			　　　　　   <option value="2個">
+				        <option value="3個">
+				       	<option value="4個">
+				        <option value="5個">
+				    </datalist>
+			    <INPUT type="submit" value="カートに入れる">
+		　</div>
+		　<!-- <= submit "カートに入れる", class: "btn btn-sm btn-primary" > -->
+　　　　</div>
 					<div class="text-right">
 						<div>
 							<h4>いちごのショートケーキです</h4>

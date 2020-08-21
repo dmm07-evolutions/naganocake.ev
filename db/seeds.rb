@@ -11,3 +11,12 @@ Admin.create!(
 	email: 'test@test.com',
 	password: 'testtest',
 )
+
+4.times do |n|
+Item.create!(
+	name:"チョコレートソース#{n+1}",
+	explanation:"美味しい美味しいチョコレート",
+	genre_id:1,
+	peice:350,
+	)
+end

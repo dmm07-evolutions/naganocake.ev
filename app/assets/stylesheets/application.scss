@@ -33,6 +33,7 @@ height: 60px;
 background-color: #16160e;
 }
 
+/*paddingフリーで使う*/
 .pt-10 {
 	padding-top: 10px;
 }
@@ -43,6 +44,8 @@ background-color: #16160e;
 	padding-top: 30px;
 }
 
+/*marginフリーで使う*/
+
 .mt-10 {
 	margin-top: 10px;
 }
@@ -52,5 +55,14 @@ background-color: #16160e;
 }
 
 .mt-30 {
-	maargin-top: 30px;
+	margin-top: 30px;
+}
+
+/*写真配置変更*/
+
+.parent {
+  display: table;
+}
+.child {
+display: table-cell;
 }
