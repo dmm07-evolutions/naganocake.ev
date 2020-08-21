@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2020_08_20_134154) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+
   create_table "cart_items", force: :cascade do |t|
     t.integer "customer_id", null: false
     t.integer "item_id", null: false
@@ -83,7 +84,7 @@ ActiveRecord::Schema.define(version: 2020_08_20_134154) do
   end
 
   create_table "shipping_addresses", force: :cascade do |t|
-    t.integer "customer", null: false
+    t.integer "customer_id", null: false
     t.string "postcode", null: false
     t.string "address", null: false
     t.string "destination", null: false
