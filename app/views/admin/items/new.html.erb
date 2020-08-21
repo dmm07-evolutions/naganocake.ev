@@ -3,11 +3,14 @@
 		<%= form_for(@item,url:admin_items_path, html: {method: :post}) do |f| %>
 		<h3>商品新規登録</h3>
 		<div class="col-md-4">
+			<!-- 画像のみ：プレビューまだです。 -->
 		 <div class="field">
 		   <%= f.label :img, "商品画像" %>
 		   <%= f.attachment_field :img, class: "img" %>
 	     </div>
 		</div>
+
+		<!-- 商品名・商品説明・ジャンル・税抜き価格・販売ステータス入力 -->
 		<div class="col-md-4">
 		 <div class="field">
 		 <%= f.label :name, "商品名" %>
@@ -33,12 +36,12 @@
          　<%= f.label :status, "販売ステータス" %>
           <%= f.select :status, [["販売中", true],["売り切れ", false]], include_blank: "選択して下さい" %>
          </div>
-     </div>
-     <div class="col-xs-offset-9 col-md-3 submitbtn">
+
+         <!-- 新規登録ボタン -->
+          <div class="col-xs-offset-9 col-md-3 submitbtn">
 		<%= f.submit "新規登録", class: "btn btn-primary" %>
 		<% end %>
-	    </div>
+     </div>
 </div>
-        
-
-	</div>
+</div>
+</div>
