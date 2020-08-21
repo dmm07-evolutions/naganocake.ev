@@ -19,9 +19,10 @@ Rails.application.routes.draw do
     get 'customers/exit' => 'customers#exit_page'
     patch 'customers/exit' => 'customers#exit'
     resources :items, only: [:index, :show]
-    resources :cart_items, only: [:index, :create, :destroy]
-    patch 'cart_items/:id' => 'end_user/cart_items#quantity'
-    delete 'cart_items/destroy_all' => 'end_user/cart_items#destroy_all'
+    resources :cart_items, only: [:index, :destroy]
+    post 'cart_items/:id' => 'cart_items#create'
+    patch 'cart_items/:id' => 'cart_items#quantity'
+    delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
     resources :shipping_addresses, only: [:index, :create, :edit, :update, :destroy]
     resources :orders, only: [:new, :create, :show]
     get 'orders/thanks' => 'orders#thanks'
