@@ -1,7 +1,6 @@
 class EndUser::ItemsController < ApplicationController
   def index
   	@items = Item.all
-  	@cart_items = CartItem.find(1)
   end
 
   def show
