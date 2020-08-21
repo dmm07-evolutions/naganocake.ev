@@ -9,13 +9,13 @@ class EndUser::CartItemsController < ApplicationController
 #アイテム詳細ページのカートに入れるボタンを押したら実行される。
   def create
     # 新しいインスタンスの定義
-  	@cart_item = CartItem.new
+  	@cart_item = CartItem.new(cart_item_params)
     # @cart_itemのcustomer_idにログイン中の顧客のIDを代入
   	@cart_item.customer_id = current_customer.id
     #@cart_itemに紐付いているitemの定義（@cart_itemのitem_idにparamsに受け取ったidを代入)
   	@cart_item.item = Item.find(params[:id])
     #@cart_itemのpuantityに数量を代入
-  	@cart_item.quantity = 1
+  	# @cart_item.quantity = 1
     #@cart_itemをデータベースに保存する
   	@cart_item.save
     #商品一覧ページに移行

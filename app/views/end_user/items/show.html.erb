@@ -8,66 +8,31 @@
 
 
 			<div class="text-right">
-				<div>
-					<h4>いちごのショートケーキです</h4>
-				</div>
-				<div class="col-md-5">
-					<td><%=attachment_image_tag(@item,:img,:fill,50,50,fallback:"noimg.jpg",size:"150x150") %></td>
-			 　　</div>
-				<div class="col-md-5 col-md-offsite-3">
-					<%=@item.explanation%>
-			 　　</div>
-			 <div>
-			 	<h4>¥<%=@item.price%><small>(税込)</small>
-			 </div>
-         </div>
-	　　　<div class="text-right">
-				<input type="text" name="a" list="cake" placeholder="個数選択" autocomplete="off" class="prymary">
-					<datalist id="cake">
-					    <option value="1個">
-			　　　　　   <option value="2個">
-				        <option value="3個">
-				       	<option value="4個">
-				        <option value="5個">
-				    </datalist>
-			    <INPUT type="submit" value="カートに入れる">
-		　</div>
-		　<!-- <= submit "カートに入れる", class: "btn btn-sm btn-primary" > -->
-　　　　</div>
-					<div class="text-right">
-						<div>
-							<h4>いちごのショートケーキです</h4>
-						</div>
-						<div class="col-md-5">
-							<p></p>
-					 　　</div>
-						<div class="col-md-5 col-md-offsite-3">
-							<p>商品説明です商品説明です商品説明です商品説明です<br>
-							商品説明です商品説明です商品説明です商品説明です<br>
-							商品説明です商品説明です商品説明です商品説明です<br>
-							商品説明です商品説明です商品説明です商品説明です</p>
-					 　　</div>
-					 <div>
-					 	<h4>¥550<small>(税込)</small>
-					 </div>
-		         </div>
-			　　　<div class="text-right">
-						<input type="text" name="a" list="cake" placeholder="個数選択" autocomplete="off" class="prymary">
-	 					<datalist id="cake">
-					    <option value="１個">
-					    <option value="２個">
-					    <option value="３個">
-					    <option value="４個">
-					    <option value="５個">
-					    <option value="６個">
-					    <option value="７個">
-					    <option value="８個">
-					    <option value="９個">
-					  </datalist>
-					</form>
-				　</div>
-				
-				<%= button_to("カートに入れる", cart_item_path(@item.id), method: :post) %>
-				　<!-- <= submit "カートに入れる", class: "btn btn-sm btn-primary" > -->
-		　　　　</div>
+					<div>
+						<h4><%=@item.name%>です</h4>
+					</div>
+					<div class="col-md-5">
+						<td><%=attachment_image_tag(@item,:img,:fill,50,50,fallback:"noimg.jpg",size:"150x150") %></td>
+				 　　</div>
+					<div class="col-md-5 col-md-offsite-3">
+						<%=@item.explanation%>
+				 　　</div>
+				 <div>
+				 	<h4>¥<%=@item.price%><small>(税込)</small></h4>
+				 </div>
+	         </div>
+		　　　<div class="text-right">
+			<%= form_for(@cart_item,url:cart_item_path(@item.id), html: {method: :post}) do |f| %>
+
+	 <div class="dropdown">
+			  <%= f.label :quantity, "個" %>
+	           <%= f.select :quantity, [["1個",1],["2個",2],["3個",3],["4個",4],["5個",5],["6個",6],["7個",7],["8個",8],["9個",9 ]] ,include_blank: "選択して下さい" %>
+	           <%= f.submit "カートに入れる" %>
+     </div>
+<%end%>
+
 </div>
+
+<!-- レイアウトを整えたい　横並びにしたい　位置直したい -->
+<!-- ドロップダウンを.timeで短くできるか？ -->
+<!-- スモールタグいらないかもしれない -->
