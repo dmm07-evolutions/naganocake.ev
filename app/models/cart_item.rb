@@ -15,4 +15,8 @@ class CartItem < ApplicationRecord
 		subtotal = price_tax.to_i * quantity
 	end
 
+	def total_price
+
+	end
+
 end

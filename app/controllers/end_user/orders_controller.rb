@@ -7,9 +7,9 @@ class EndUser::OrdersController < ApplicationController
   end
 
   def show
-    @orders = Order.all
-    @ordered_items = OrderedItem.find(item_params)
-    @price = (BigDecimal(@ordered_item)) * (BigDecimal("1.08"))
+    @cart_item = CartItem.all
+    # @ordered_items = OrderedItem.find(item_params)
+    # @price = (BigDecimal(@ordered_item)) * (BigDecimal("1.08"))
   end
 
   def thanks
@@ -24,12 +24,14 @@ class EndUser::OrdersController < ApplicationController
 
   private
 
-  def item_params
-    params.require(:item).permit(:img, :name, :explanation, :genre_id, :price, :status)
-  end
 
-  def shipping_address_params
-    params.require(:shipping_address).permit(:postcode, :address, :destination)
-  end
+
+  # def item_params
+  #   params.require(:item).permit(:img, :name, :explanation, :genre_id, :price, :status)
+  # end
+
+  # def shipping_address_params
+  #   params.require(:shipping_address).permit(:postcode, :address, :destination)
+  # end
 
 end
