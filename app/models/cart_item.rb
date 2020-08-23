@@ -10,7 +10,7 @@ class CartItem < ApplicationRecord
 		price_tax.round
 	end
 
-	#消費税込みの小計（単価xx数量）
+	#消費税込みの小計（単価x数量）
 	def subtotal
 		subtotal = price_tax.to_i * quantity
 	end
