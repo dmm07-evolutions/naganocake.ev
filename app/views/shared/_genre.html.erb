@@ -7,9 +7,10 @@
 			   </tr>
 			</thead>
 			<tbody>
+				<% @genres.each do |genre| %>
 				 <tr>
-				  <td>< @books.each do |book| ></td>
-                  <td>< end ></td>
+				  	<td><%= genre.name %></td>
+                  <% end %>
                  </tr>
              </tbody>
         </table>

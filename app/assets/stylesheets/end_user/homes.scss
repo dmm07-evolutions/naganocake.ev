@@ -1,3 +1,20 @@
 // Place all the styles related to the end_user/homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.parent {
+	display: grid;
+    grid-template-columns: 200px 200px 200px;
+    gap: 20px;
+}
+
+.child {
+	justify-content: space-around;
+// 	grid-template-columns: 1fr 1fr;
+// 	gap: 10px;
+    }
+
+.btn-mottomiru {
+	background-color: #16160e;
+}
+

@@ -1,6 +1,7 @@
 class EndUser::ItemsController < ApplicationController
   def index
   	@items = Item.all
+  	@genres = Genre.all
   end
 
   def show
@@ -8,6 +9,7 @@ class EndUser::ItemsController < ApplicationController
 
   	@cart_item = CartItem.new
   end
+
 
 end
 
