@@ -11,6 +11,11 @@
 				</tr>
 			</thead>
 			<tbody>
+					<!--合計金額の定義　-->
+					<% @sum = 0 %>
+					<!-- 送料の定義 -->
+					<% @postage = 800 %>
+
 				<% @cart_items.each do |cart_item| %>
 				<tr>
 					<td><%= cart_item.item.name %></td>
@@ -18,11 +23,12 @@
 					<td><%= cart_item.quantity %></td>
 					<td><%= cart_item.subtotal %></td>
 				</tr>
+				<% @sum += cart_item.subtotal %>
 				<% end %>
 			</tbody>
 		</table>
-		<span><strong>支払い方法</strong><%= @order.payment_method %></span><br>
-		<span><strong>お届け先</strong><%= @order.address_all %></span>
+		<strong>支払い方法</strong><span class="col-md-offset-1"><%= @order.payment_method %></span><br>
+		<strong>お届け先</strong><span class="col-md-offset-1"><%= @order.address_all %></span>
 	</div>
 	<div class="col-md-offset-1 col-md-2">
 		<table class="table">
@@ -33,11 +39,11 @@
 				</tr>
 				<tr>
 					<th>商品合計</th>
-					<td></td>
+					<td><%= @sum %></td>
 				</tr>
 				<tr>
 					<th>請求金額</th>
-					<td></td>
+					<td><%= @sum + @postage %></td>
 				</tr>
 			</tbody>
 		</table>

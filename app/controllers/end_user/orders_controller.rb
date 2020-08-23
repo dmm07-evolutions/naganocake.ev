@@ -47,7 +47,7 @@ class EndUser::OrdersController < ApplicationController
     if params[:order][:address_select] == "0"
       #ログイン中の顧客の登録情報からデータを取得する
       @customer = Customer.find(current_customer.id)
-      {postal_code: @customer.postcode, address: @customer.address, name: @customer.first_name}
+      {postal_code: @customer.postcode, address: @customer.address, name: @customer.first_name + @customer.last_name}
 
     #登録済住所から選択した場合の処理
     elsif params[:order][:address_select] == "1"
