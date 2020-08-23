@@ -52,7 +52,7 @@ class EndUser::OrdersController < ApplicationController
     #登録済住所から選択した場合の処理
     elsif params[:order][:address_select] == "1"
       #ドロップダウンで選択した住所のデータを取得する
-      attrs = params[:order][:order_address].split(" ")
+      attrs = params[:order][:order_address].split
       {postal_code: attrs[0], address: attrs[1], name: attrs[2]}
 
     #新しいお届け先を選択した場合の処理

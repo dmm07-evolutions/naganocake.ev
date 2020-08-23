@@ -9,7 +9,7 @@ class Order < ApplicationRecord
    attr_accessor :address_select
    attr_accessor :order_address
 
-   #プルダウン内の表示
+   #confirmページでの表示
    def address_all
    	 "#{postal_code} #{address} #{name}"
    end
