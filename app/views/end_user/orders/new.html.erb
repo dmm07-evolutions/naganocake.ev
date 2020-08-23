@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="row">
 		<h3>注文情報入力</h3>
-      <%= form_for(@order, url: orders_path, html: {method: :post}) do |f| %>
+      <%= form_for(@order, url: orders_confirm_path, html: {method: :post}) do |f| %>
       <!-- 支払い方法選択 -->
 		<div class="col">
 			<h3 class="lead">支払方法</h3>
@@ -21,7 +21,7 @@
  			 <!-- 登録住所から選択：プルダウンで選択@shipping_address -->
  			 <div class="col-md-8">
  			 	<label><%= f.radio_button :address_select, 1 %>登録済住所から選択</label>
- 			 	<%= f.collection_select :address, @shipping_address, :id, :all_address, include_blank: "選択して下さい" %>
+ 			 	<%= f.collection_select :order_address, @shipping_address, :registered_address, :all_address, include_blank: "選択して下さい" %>
  			 </div>
  			 <!-- 新しいお届け先：郵便番号・住所・宛名を入力するtext_field -->
  			 <div class="col-md-8">
@@ -41,7 +41,7 @@
  			 </div>
              <!-- 確認画面へ進むボタン -->
  			 <div class="col-xs-offset-5 col-md-3">
-		<%= link_to "確認画面へ進む", order_path(:id), class: "btn btn-primary" %>
+ 			 	<%= f.submit "確認画面へ進む", class:"btn btn-primary" %>
            </div>
 		</div>
 	  <% end %>

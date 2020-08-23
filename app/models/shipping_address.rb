@@ -9,6 +9,11 @@ class ShippingAddress < ApplicationRecord
 
 	def all_address
     "#{postcode} #{address} #{destination}"
-  end
+  	end
+
+  	#shipping_addressesテーブルの:postcode,:address,:destinationカラムのデーターを一つにまとめる
+  	def registered_address
+  		"#{postcode} #{address} #{destination}"
+  	end
 
 end

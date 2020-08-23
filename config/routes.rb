@@ -27,7 +27,8 @@ Rails.application.routes.draw do
     get 'orders/thanks' => 'orders#thanks'
     get 'orders/history' => 'orders#history_index'
     get 'orders/history/:id' => 'orders#history_show'
-    resources :orders, only: [:new, :create, :show]
+    resources :orders, only: [:new, :create]
+    post 'orders/confirm' => 'orders#confirm'
 
   end
 
