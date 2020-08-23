@@ -6,6 +6,7 @@ class EndUser::OrdersController < ApplicationController
      @shipping_address = ShippingAddress.where(customer_id: current_customer.id)
   end
 
+
   #確認画面へ進む
   def confirm
     #ログイン中の顧客のカート内商品を取得
@@ -70,6 +71,7 @@ class EndUser::OrdersController < ApplicationController
       total
     end
   end
+
 
 
 end

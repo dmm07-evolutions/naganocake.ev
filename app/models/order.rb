@@ -14,4 +14,5 @@ class Order < ApplicationRecord
    	 "#{postal_code} #{address} #{name}"
    end
 
+
 end
