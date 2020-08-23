@@ -3,7 +3,8 @@ class EndUser::CartItemsController < ApplicationController
 #ショッピングカートページ
   def index
     #ログイン中の顧客のカートない商品を取得
-  	@cart_item = CartItem.where(customer_id: current_customer)
+  	#@cart_item = CartItem.where(customer_id: current_customer)
+    @cart_item = current_customer.cart_items
   end
 
 #アイテム詳細ページのカートに入れるボタンを押したら実行される。
