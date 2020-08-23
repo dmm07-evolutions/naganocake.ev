@@ -12,6 +12,7 @@
 					<th>税抜き価格</th>
 					<th>ジャンル</th>
 					<th>ステータス</th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -22,6 +23,7 @@
 					<td><%= item.price %></td>
 					<td><%= item.genre.name %></td>
 					<td><%= item.status_text %></td>
+					<td><%= link_to "削除", admin_item_path(item), method: :delete, class:"btn btn-danger" %></td>
 				</tr>
 				<% end %>
 				</tbody>
