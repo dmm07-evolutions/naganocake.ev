@@ -1,6 +1,8 @@
 class Order < ApplicationRecord
+
+   #dependentつけるとエラー
 	belongs_to :customer
-	has_many :order_items, dependent: :destroy
+	has_many :ordered_items, dependent: :destroy
 
 	 enum payment_method:    [ :クレジットカード決済, :銀行振り込み ]
 	# enum address_select:    [ :ご自身の住所, :ご登録済みの住所, :新しいお届け先 ]
@@ -12,6 +14,14 @@ class Order < ApplicationRecord
    #confirmページでの表示
    def address_all
    	 "#{postal_code} #{address} #{name}"
+   end
+
+   def total_quantity
+      total = 0
+      ordered_items.each do |ordered_item|
+         total += ordered_item.quantity
+      end
+      total
    end
 
 
