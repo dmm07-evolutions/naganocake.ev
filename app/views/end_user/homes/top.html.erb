@@ -8,8 +8,19 @@
 			     会員でない方も商品の一覧はできますが、<br>
 				   購入には会員登録が必要になります。</p>
 		    </div>
+
+<div class="container">
+	<div class="slide">
+    <div class="theTarget">
+     <%= image_tag "gaikan.jpg" %>
+     <%= image_tag "cake1.jpg" %>
+     <%= image_tag "cake2.jpg" %>
+    </div>
+  </div>
+</div>
 <!-- 					真ん中にback-groundimage-->
-      <div class="row"><div class="col-md-2">
+      <div class="row　center-block">
+      	<div class="col-md-2">
       	<%= render "shared/genre"%></div>
 			 <div class="col-md-10">
 			 	<div class="recommend">
@@ -18,18 +29,20 @@
 	                	<% @items_all.last(6).each do |i| %>
 		                   <div class="child">
 			                   <%= link_to item_path(i) do %>
-				                 <%=attachment_image_tag(i,:img ,:fill,200,200,fallback:"noimg.jpg",size:"200x200") %>
+				                 <%=attachment_image_tag(i,:img ,:fill,300,300,fallback:"noimg.jpg",size:"300x300") %>
 				               <% end %>
 		                    </div>
 		                <% end %>
 		               </div>
 		           </div>
+		           </div>
+		           </div>
 		               <!-- <div class="col-md-10"> -->
 		                <div class="text-right">
-						   <%=link_to "もっと見る >",items_path , class:"btn btn-pink "%>
+						   <%=link_to "もっと見る >",items_path , class:"btn btn-pink col-md-offset-11 "%>
 						</div>
-				    </div>
-             </div>
+                
+             
 	</div>
 </div>
 </div>
