@@ -19,10 +19,21 @@
 
 header {
 	color:white;
+	background-color: #E9CEC7;
 }
 
 body {
 	margin-top: 60px;
+	background-color: #f0ecba;
+}
+
+.table-hover {
+	margin-top: 80px;
+}
+
+.slide {
+	height: 500px;
+	width: 100%;
 }
 
 .footer {
@@ -58,11 +69,3 @@ background-color: #16160e;
 	margin-top: 30px;
 }
 
-/*写真配置変更*/
-
-.parent {
-  display: table;
-}
-.child {
-display: table-cell;
-}
