@@ -1,30 +1,31 @@
 <div class="row">
 	<div class="col-md-10 md-offset-1">
 		<h3>配送先登録/一覧</h3>
-
+       
+       <form class="form-horizontal">
         <!-- 住所詳細　登録フォーム -->
-		<div class="form-group">
 			<%= form_for @shipping_address, url: shipping_addresses_path do |f| %>
 			<!-- 郵便番号　登録 -->
-			<div class="col-md-offset-1">
-		        <%= f.label :postcode, "郵便番号（ハイフンなし）" %>
+			<div class="col-md-offset-1 form-group">
+		        <%= f.label :postcode, "郵便番号（ハイフンなし）", class: "col-md-3 control-label" %>
 		        <%= f.text_field :postcode %>
 		    </div>
 		    <!-- 住所　登録 -->
-		    <div class="col-md-offset-1">
-		        <%= f.label :address, "住所" %>
-		        <%= f.text_field :address, class: "col-md-offset-2" %>
+		    <div class="col-md-offset-1 form-group">
+		        <%= f.label :address, "住所", class: "col-md-3 control-label" %>
+		        <%= f.text_field :address %>
 		    </div>
 		    <!-- 宛名　登録 -->
-		    <div class="col-md-offset-1">
-		        <%= f.label :destination, "宛名" %>
-		        <%= f.text_field :destination, class: "col-md-offset-2" %>
+		    <div class="col-md-offset-1 form-group">
+		        <%= f.label :destination, "宛名", class: "col-md-3 control-label" %>
+		        <%= f.text_field :destination %>
 
                 <!-- 送信 -->
-		        <%= f.submit '登録する', class: 'btn btn-success col-md-offset-3' %>
+		        <%= f.submit '登録する', class: 'btn btn-success col-md-offset-4' %>
 		    </div>
 		    <% end %>
 		</div>
+	</form>
 
         <!-- 登録住所詳細　一覧 -->
 		<div class="address-table">

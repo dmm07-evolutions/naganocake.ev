@@ -1,7 +1,9 @@
 
 <div class="container">
 	<div class="row">
+		<div class="col-md-2">
 		<%= render 'shared/genre'%>
+	</div>
 		 <div class="col-offset-1 col-md-9">
 				<!--	unless genre_serch?-->
 		<div class="items">
@@ -9,7 +11,7 @@
 	        　　<% @items.each do |item| %>
 	            <div class="item">
 			       <%= link_to item_path(item) do %>
-				     <%=attachment_image_tag(item,:img ,:fill,150,150,fallback:"noimg.jpg",size:"200x200") %><br>
+				     <%=attachment_image_tag(item,:img ,:fill,150,150,fallback:"noimg.jpg",size:"250x250") %><br>
 				     <%= item.name %>
 				     <%= item.price %>円
 				     <% end %>
@@ -18,6 +20,8 @@
 	    </div>
 	</div>
 </div>
+<div class="col-md-offset-10">
 <%= paginate @items %>
+</div>
 
 <!-- レイアウト　画像の間隔を横並びのまま開けたい -->
