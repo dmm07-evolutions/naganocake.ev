@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     resources :shipping_addresses, only: [:index, :create, :edit, :update, :destroy]
     get 'orders/thanks' => 'orders#thanks'
     get 'orders/history' => 'orders#history_index'
-    get 'orders/history/:id' => 'orders#history_show'
+    get 'orders/history/:id' => 'orders#history_show', as: 'history'
     resources :orders, only: [:new, :create]
     post 'orders/confirm' => 'orders#confirm'
 

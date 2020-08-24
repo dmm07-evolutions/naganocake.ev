@@ -47,9 +47,15 @@ class EndUser::OrdersController < ApplicationController
   end
 
   def history_index
+    @orders = Order.all
+
   end
 
   def history_show
+    @order = Order.find(params[:id])
+    @postage = 800
+    @orders = Order.all
+    @sum = 0
   end
 
 
