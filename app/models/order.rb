@@ -1,4 +1,6 @@
 class Order < ApplicationRecord
+
+   #dependentつけるとエラー
 	belongs_to :customer
 	has_many :ordered_items, dependent: :destroy
 
@@ -12,6 +14,14 @@ class Order < ApplicationRecord
    #confirmページでの表示
    def address_all
    	 "#{postal_code} #{address} #{name}"
+   end
+
+   def total_quantity
+      total = 0
+      ordered_items.each do |ordered_item|
+         total += ordered_item.quantity
+      end
+      total
    end
 
 
