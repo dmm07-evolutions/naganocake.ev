@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
+
+  <link rel="stylesheet" href="css/skippr.css">
+  <link rel="stylesheet" href="css/style.css">
+
     <title>ながのCAKE</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,11 +15,13 @@
 
   <body>
 
-    <header class="navbar navbar-fixed-top navbar-inverse">
+    <header class="navbar navbar-fixed-top">
   <div class="container">
-    <nav class="nav navbar-nav navbar-left">
+    <!-- <nav class="nav navbar-nav navbar-left">
       <span class="white">ながのCake</span>
-    </nav>
+    </nav> -->
+     <a class="logo navbar-left" href="/"><%= image_tag ('naganocake.png'), :size => '100x45' %></a>
+
   <% if customer_signed_in? %>
     <nav>
       <ul class="nav navbar-nav navbar-right">

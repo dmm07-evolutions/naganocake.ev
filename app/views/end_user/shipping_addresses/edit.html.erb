@@ -1,32 +1,35 @@
 <div class="row">
-	<div class="col-md-7 md-offset-1">
 		<h3>配送先編集</h3>
 
         <!--       編集フォーム         -->
-		<div class="form_group">
+		
 			<%= form_for(@shipping_address, url:"/shipping_addresses/#{@shipping_address.id}", html: {method: "patch"}) do |f| %>
+			<form class="form-horizontal">
 			    <!--   郵便番号　編集      -->
-			    <div class="col-md-offset-1">
-		            <%= f.label :postcode, "郵便番号（ハイフンなし）" %>
-		            <%= f.text_field :postcode %>
+			    <div class="postcode col-xs-offset-1 form-group">
+		            <%= f.label :postcode, "郵便番号(ハイフンなし)", class: "col-sm-4 control-label" %>
+		            <%= f.text_field :postcode, class: "col-md-offset-1" %>
 		        </div>
 
                 <!--       住所　編集      -->
-		        <div class="col-md-offset-1">
-		            <%= f.label :address, "住所" %>
-		            <%= f.text_field :address, class: "col-md-offset-3" %>
+		        <div class="address col-xs-offset-1 form-group">
+		            <%= f.label :address, "住所", class: "col-sm-4 control-label" %>
+		            <%= f.text_field :address, class: "col-md-offset-1" %>
 		        </div>
 
                 <!--       宛名　編集      -->
-		        <div class="col-md-offset-1">
-		            <%= f.label :destination, "宛名" %>
-		            <%= f.text_field :destination, class: "col-md-offset-3" %>
+		        <div class="destination col-xs-offset-1 form-group">
+		            <%= f.label :destination, "宛名", class: "col-sm-4 control-label" %>
+		            <%= f.text_field :destination, class: "col-md-offset-1" %>
 		        </div>
 
+		
+
                 <!--     変更内容　保存     -->
-		        <%= f.submit '編集する', class: "btn btn-info col-md-offset-10" %>
+              <div class="col-xs-offset-10">
+		        <%= f.submit '更新する', class: "btn btn-info " %>
 			<% end %>
 		</div>
+		</form>
 	</div>
-</div>
 

@@ -1,24 +1,23 @@
+
 <div class="container">
 	<div class="row">
-　　　<%= render 'shared/genre'%>
-		 <div class="col-md-9 col-md-offset-3">
+		<%= render 'shared/genre'%>
+		 <div class="col-offset-1 col-md-9">
 				<!--	unless genre_serch?-->
-			<h1>商品一覧(全件)</h1>
+		<div class="items">
+			<h3>商品一覧(全<%= @item.count %>件)</h3>
 	        　　<% @items.each do |item| %>
-	            	<table class="table table-hover table-inverse flex_test-box">
-	                 <tbody class="flex_test-item">
-	                     <tr class="text-center">
-	                     	<td><%=attachment_image_tag(item,:img,:fill,70,70,fallback:"noimg.jpg",size:"70x70") %></td>
-	                     </tr>
-	                     <tr>
-	                         <td><%= link_to item.name, item_path(item.id) %>
-	                         ¥<%= item.price %></td>
-	                     </tr>
-	                  </tbody>
-	                </table>
-	            <%end%>
+	            <div class="item">
+			       <%= link_to item_path(item) do %>
+				     <%=attachment_image_tag(item,:img ,:fill,150,150,fallback:"noimg.jpg",size:"200x200") %><br>
+				     <%= item.name %>
+				     <%= item.price %>円
+				     <% end %>
+		         </div>
+	           <%end%>
 	    </div>
 	</div>
 </div>
+<%= paginate @items %>
 
 <!-- レイアウト　画像の間隔を横並びのまま開けたい -->
