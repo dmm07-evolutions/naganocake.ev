@@ -10,7 +10,8 @@ class EndUser::OrdersController < ApplicationController
   #確認画面へ進む
   def confirm
     #ログイン中の顧客のカート内商品を取得
-    @cart_items = CartItem.where(customer_id: current_customer)
+    #@cart_items = CartItem.where(customer_id: current_customer)
+    @cart_items = current_customer.cart_items
     #送料の定義
     @postage = 800
     #新しいインスタンスを作成しorder_paramsで取得したデータを代入
@@ -25,6 +26,21 @@ class EndUser::OrdersController < ApplicationController
   end
 
   def create
+    @order = Order.new(order_confirm_params)
+    @order.customer = current_customer
+    @order.save
+
+    current_customer.cart_items.each do |cart_item|
+      @ordered_item = OrderedItem.new
+      @ordered_item.order = @order
+      @ordered_item.item = cart_item.item
+      @ordered_item.price = cart_item.price_tax
+      @ordered_item.quantity = cart_item.quantity
+      @ordered_item.production_status = 0
+      @ordered_item.save
+      cart_item.destroy
+    end
+    render "thanks"
   end
 
   def thanks
@@ -63,14 +79,18 @@ class EndUser::OrdersController < ApplicationController
     end
   end
 
-  #請求金額を計算する
-  def total_cost
-    @cart_items.each do |cart_item|
-      total = 0
-      total += cart_item.subtotal
-      total
-    end
+  def order_confirm_params
+    params.require(:order).permit(:payment_method, :postal_code, :address, :name, :shipping_cost, :total_payment)
   end
+
+  #請求金額を計算する
+  # def total_cost
+  #   @cart_items.each do |cart_item|
+  #     total = 0
+  #     total += cart_item.subtotal
+  #     total
+  #   end
+  # end
 
 
 
