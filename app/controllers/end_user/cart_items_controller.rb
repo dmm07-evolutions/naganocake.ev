@@ -4,7 +4,8 @@ class EndUser::CartItemsController < ApplicationController
   def index
     #ログイン中の顧客のカートない商品を取得
   	#@cart_item = CartItem.where(customer_id: current_customer)
-    @cart_item = current_customer.cart_items
+    @cart_items = current_customer.cart_items
+    @numbers = [0, 1, 2, 3, 4, 5]
   end
 
 #アイテム詳細ページのカートに入れるボタンを押したら実行される。
@@ -41,10 +42,20 @@ class EndUser::CartItemsController < ApplicationController
     redirect_to cart_items_path
   end
 
+  def quantity
+    @cart_item = CartItem.find(params[:id])
+    @cart_item.update(cart_item_quantity)
+    redirect_to cart_items_path
+  end
+
   private
 #form_forから受け取るデータ数量（quantuty)
    def cart_item_params
    	params.require(:cart_item).permit(:quantity)
+   end
+
+   def cart_item_quantity
+    params.require(:cart_item).permit(:quantity)
    end
 
 
