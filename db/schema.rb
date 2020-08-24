@@ -40,8 +40,10 @@ ActiveRecord::Schema.define(version: 2020_08_24_090456) do
     t.datetime "updated_at", null: false
   end
 
+
 # Could not dump table "customers" because of following StandardError
 #   Unknown type '' for column 'address'
+
 
   create_table "genres", force: :cascade do |t|
     t.string "name", null: false
