@@ -34,7 +34,7 @@ class EndUser::OrdersController < ApplicationController
       @ordered_item = OrderedItem.new
       @ordered_item.order = @order
       @ordered_item.item = cart_item.item
-      @ordered_item.price = cart_item.item.price
+      @ordered_item.price = cart_item.price_tax
       @ordered_item.quantity = cart_item.quantity
       @ordered_item.production_status = 0
       @ordered_item.save
