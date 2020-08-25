@@ -8,10 +8,12 @@ class Admin::OrdersController < ApplicationController
   	@order = Order.find(params[:id])
   end
 
+  #制作ステータス更新
   def update_production
   	@ordered_item = OrderedItem.find(params[:id])
     @order = @ordered_item.order
   	@ordered_item.update(production_params)
+    #制作ステータスが入金確認
     if @ordered_item.production_status == 2
       @order.status = 2
       @order.save
@@ -53,7 +55,6 @@ class Admin::OrdersController < ApplicationController
 
     def status_params
       params.require(:order).permit(:status)
-      byebug
     end
 
 
