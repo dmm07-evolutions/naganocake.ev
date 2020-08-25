@@ -22,7 +22,7 @@ class Admin::ItemsController < ApplicationController
     @item.errors.full_messages.each do |msg|
     p msg
     end
-  	redirect_to admin_items_path
+  	redirect_to admin_item_path(@item.id)
   end
 
   def update
