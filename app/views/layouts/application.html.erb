@@ -23,7 +23,7 @@
   <% if customer_signed_in? %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to customers_path(current_customer) do %>マイページ<span class="glyphicon glyphicon-user" aria-hidden="true"></span><% end %></li>
+          <li><%= link_to customers_path do %>マイページ<span class="glyphicon glyphicon-user" aria-hidden="true"></span><% end %></li>
           <li><%= link_to items_path do %>商品一覧<span class="glyphicon glyphicon-book" aria-hidden="true"></span><% end %></li>
           <li><%= link_to cart_items_path do %>カート<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
 <% end %></a></li>
