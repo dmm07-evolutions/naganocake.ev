@@ -16,6 +16,10 @@ class Customer < ApplicationRecord
   		"有効会員"
   	end
   end
+  #退会フラグがtureかfalseかを判定する
+  def active_for_authentication?
+    super && (self.is_deleted == false)
+  end
 
   #フルネーム
   def full_name
