@@ -25,6 +25,7 @@ class Admin::ItemsController < ApplicationController
   def create
   	@item = Item.new(item_params)
   	@item.save
+
     #商品詳細ページに遷移
   	redirect_to admin_item_path(@item.id)
   end
