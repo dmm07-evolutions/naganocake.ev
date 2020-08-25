@@ -36,7 +36,9 @@ Rails.application.routes.draw do
     get 'homes/top' => 'homes#top'
     resources :customers, only: [:index, :show, :edit, :update]
     resources :items, only: [:new, :create, :index, :show, :edit, :update, :destroy]
-    resources :orders, only: [:index, :show, :update]
+    resources :orders, only: [:index, :show]
+    patch 'order_status/:id' => 'orders#update_status', as:"order_status"
+    patch 'production_status/:id' => 'orders#update_production', as:"production_status"
     resources :genres, only: [:index, :edit, :create, :update]
   end
 
