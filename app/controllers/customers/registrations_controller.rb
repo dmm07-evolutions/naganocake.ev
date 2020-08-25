@@ -50,7 +50,7 @@ class Customers::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
    def configure_account_update_params
-     devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :first_name_kana, :email, :postcode, :address, :phone_number, :password, :password_confirmation])
+     devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :first_name_kana, :last_name_kana, :email, :postcode, :address, :phone_number, :password, :password_confirmation])
    end
 
    def update_resource(resource, params)
