@@ -1,7 +1,6 @@
 <div class="row">
 	<div class="col-md-10 md-offset-1">
 		<h3>配送先登録/一覧</h3>
-       
         <!-- 住所詳細　登録フォーム -->
 			<%= form_for @shipping_address, url: shipping_addresses_path do |f| %>
 			<!-- 郵便番号　登録 -->
@@ -23,7 +22,8 @@
 		        <%= f.submit '登録する', class: 'btn btn-success col-md-offset-4' %>
 		    </div>
 		    <% end %>
-	</div>
+
+		</div>
 
         <!-- 登録住所詳細　一覧 -->
 		<div class="address-table">

@@ -21,15 +21,17 @@ class EndUser::OrdersController < ApplicationController
     @order.customer = current_customer
     #@orderのshipping_costに送料を代入
     @order.shipping_cost = @postage
-    #@orderのtotal_peymentに請求金額を代入
-    @order.total_payment = 1000
   end
 
+  #注文確定した際、注文情報をデータベースに保存する
   def create
+    #注文(order)に保存
     @order = Order.new(order_confirm_params)
     @order.customer = current_customer
     @order.save
 
+    #注文商品(ordered_item)に保存
+    #orderに紐づくordered_itemを配列で取得しeach文で一つずつのデータを保存する
     current_customer.cart_items.each do |cart_item|
       @ordered_item = OrderedItem.new
       @ordered_item.order = @order
@@ -40,6 +42,7 @@ class EndUser::OrdersController < ApplicationController
       @ordered_item.save
       cart_item.destroy
     end
+    #thanksページに遷移する
     render "thanks"
   end
 
@@ -85,18 +88,11 @@ class EndUser::OrdersController < ApplicationController
     end
   end
 
+  #注文確認画面のフォームより送られてくるデータ
   def order_confirm_params
     params.require(:order).permit(:payment_method, :postal_code, :address, :name, :shipping_cost, :total_payment)
   end
 
-  #請求金額を計算する
-  # def total_cost
-  #   @cart_items.each do |cart_item|
-  #     total = 0
-  #     total += cart_item.subtotal
-  #     total
-  #   end
-  # end
 
 
 

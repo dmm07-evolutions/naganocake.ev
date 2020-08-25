@@ -19,7 +19,7 @@ class EndUser::CartItemsController < ApplicationController
     #@cart_itemをデータベースに保存する
   	@cart_item.save
     #商品一覧ページに移行
-  	redirect_to items_path
+  	redirect_to cart_items_path
   end
 
 #ショッピングカートページの削除ボタンを押したら実行される

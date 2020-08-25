@@ -7,13 +7,14 @@ class ShippingAddress < ApplicationRecord
 	# validates :destination, presence: true
 
 
+  #郵便番号、住所、宛先をまとめる
 	def all_address
     "#{postcode} #{address} #{destination}"
-  	end
+  end
 
   	#shipping_addressesテーブルの:postcode,:address,:destinationカラムのデーターを一つにまとめる
-  	def registered_address
-  		"#{postcode} #{address} #{destination}"
-  	end
+  def registered_address
+  	"#{postcode} #{address} #{destination}"
+  end
 
 end

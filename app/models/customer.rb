@@ -8,6 +8,7 @@ class Customer < ApplicationRecord
   # cart_itemsのアソシエーション
   has_many :cart_items, dependent: :destroy
 
+  #退会フラグの判定
   def is_status
   	if is_deleted == true
   		"退会済会員"
@@ -16,10 +17,12 @@ class Customer < ApplicationRecord
   	end
   end
 
+  #フルネーム
   def full_name
     "#{first_name} #{last_name}"
   end
 
+  #フルネーム（フリガナ）
   def full_name_kana
     "#{first_name_kana} #{last_name_kana}"
   end
