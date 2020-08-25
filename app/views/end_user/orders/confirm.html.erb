@@ -11,11 +11,8 @@
 				</tr>
 			</thead>
 			<tbody>
-					<!--合計金額の定義　-->
-					<% @sum = 0 %>
-					<!-- 送料の定義 -->
-					<% @postage = 800 %>
-
+				<!--合計金額の定義　-->
+				<% @sum = 0 %>
 				<% @cart_items.each do |cart_item| %>
 				<tr>
 					<td><%= cart_item.item.name %></td>
@@ -50,6 +47,7 @@
 			</tbody>
 		</table>
 	</div>
+	<!-- 注文情報をコントローラーに受け渡すための記述 -->
 	<%= form_for(@order, url: orders_path, html: {method: :post}) do |f| %>
 		<%= f.hidden_field :payment_method, :value => @order.payment_method %>
 		<%= f.hidden_field :postal_code, :value => @order.postal_code %>
