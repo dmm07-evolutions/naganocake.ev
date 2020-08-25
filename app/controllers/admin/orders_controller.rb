@@ -21,12 +21,11 @@ class Admin::OrdersController < ApplicationController
     catch :done do
       if @ordered_item.production_status == 3
         @order.ordered_items.each do |ordered_item|
-          if ordered_item.production_status == 3
-            @order.status = 3
-          else
+          if ordered_item.production_status != 3
             throw :done
           end
         end
+        @order.status = 3
         @order.save
       end
     end
