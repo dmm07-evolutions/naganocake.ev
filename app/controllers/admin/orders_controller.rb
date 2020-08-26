@@ -8,19 +8,59 @@ class Admin::OrdersController < ApplicationController
   	@order = Order.find(params[:id])
   end
 
-  def update
+  #制作ステータス更新
+  def update_production
   	@ordered_item = OrderedItem.find(params[:id])
-  	@ordered_item.update(status_params)
+    @order = @ordered_item.order
+  	@ordered_item.update(production_params)
+    #制作ステータスが制作中に変更された時注文ステータスを製作中に変更する
+    if @ordered_item.production_status == 2
+      @order.status = 2
+      @order.save
+    end
+    #注文内全ての商品の制作ステータスが制作鑑賞になった時注文ステータスを発送準備にする
+    catch :done do
+      if @ordered_item.production_status == 3
+        @order.ordered_items.each do |ordered_item|
+          if ordered_item.production_status != 3
+            throw :done
+          end
+        end
+        @order.status = 3
+        @order.save
+      end
+    end
+    #注文詳細ページに遷移
   	redirect_to admin_order_path(@ordered_item.order.id)
+  end
+
+  #注文ステータス更新
+  def update_status
+    @order = Order.find(params[:id])
+    @order.update(status_params)
+    #注文ステータスを入金確認に変更した時制作ステータスを製作中に変更する
+    if @order.status == 1
+      @order.ordered_items.each do |ordered_item|
+        ordered_item.production_status = 1
+        ordered_item.save
+      end
+    end
+    #注文詳細ページに遷移
+    redirect_to admin_order_path(@order.id)
   end
 
 
 
   private
-
-  	def status_params
+    #制作ステータス更新
+  	def production_params
   		params.require(:ordered_item).permit(:production_status)
   	end
+
+    #注文ステータス更新
+    def status_params
+      params.require(:order).permit(:status)
+    end
 
 
 

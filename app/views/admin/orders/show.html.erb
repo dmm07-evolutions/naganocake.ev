@@ -1,6 +1,7 @@
 <div class="row">
 	<div class="col-md-offset-1 col-md-10">
 		<h2>注文履歴詳細</h2>
+		<%= form_for @order, url:admin_order_status_path(@order) do |f| %>
 		<table>
 			<tr>
 				<th>購入者</th>
@@ -16,9 +17,11 @@
 			</tr>
 			<tr>
 				<th>注文ステータス</th>
-				<td><%= @order.status %></td>
+				<td><%= f.select :status, [["入金待ち", 0],["入金確認", 1],["製作中", 2],["発送準備", 3],["発送済み", 4]] %></td>
+				<td><%= f.submit "更新" %></td>
 			</tr>
 		</table>
+		<% end %>
 	</div>
 </div>
 <div class="row">
@@ -41,9 +44,11 @@
 					<td><%= ordered_item.price %></td>
 					<td><%= ordered_item.quantity %></td>
 					<td><%= ordered_item.subtotal %></td>
-					<%= form_for(ordered_item, url:admin_order_path(ordered_item.id), html: {method: :patch}) do |f| %>
-					<td><%= f.select :production_status, [["制作不可", 0],["制作待ち", 1],["製作中", 2],["制作完了", 3]] %></td>
-					<td><%= f.submit "更新" %></td>
+					<td>
+						<%= form_for(ordered_item, url:admin_production_status_path(ordered_item.id), html: {method: :patch}) do |f| %>
+						<%= f.select :production_status, [["制作不可", 0],["制作待ち", 1],["製作中", 2],["制作完了", 3]] %>
+						<%= f.submit "更新" %>
+					</td>
 					<% end %>
 				</tr>
 				<% end %>
