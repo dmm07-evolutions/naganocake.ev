@@ -1,5 +1,6 @@
 class EndUser::CustomersController < ApplicationController
   before_action :authenticate_customer!
+
 #マイページ
   def show
     #マイページにログイン中のユーザーの情報を渡す

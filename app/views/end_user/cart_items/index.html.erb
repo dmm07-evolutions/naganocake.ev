@@ -7,7 +7,7 @@
 	</div>
 </div>
 <div class="row">
-	<div class="col-md-10">
+	<div class="col-md-offset-1 col-md-10">
 		<!-- カート内商品一覧 -->
 		<table class="table">
 			<thead>
@@ -21,8 +21,8 @@
 			</thead>
 			<tbody>
 				<% @sum = 0 %>
-				<tr>
 				<% @cart_items.each do |cart_item| %>
+				<tr>
 					<td><%= cart_item.item.name %></td>
 					<td><%= cart_item.price_tax %></td>
 					<td>
@@ -36,23 +36,25 @@
 					<td><% @sum += cart_item.subtotal %></td>
 				</tr>
 				<% end %>
-				<table class="table">
-					<thead>
-						<th>合計金額</th>
-				   </thead>
-				   <tbody>
-				   	  <td><%= @sum %></td>
-				   </tbody>
-				</table>
 			</tbody>
 		</table>
 	</div>
 </div>
 <div class="row">
-	<div class="col-md-3">
-		<%= link_to "注文情報入力画面へ", new_order_path, class:"btn btn-primary" %>
-		<br>
-		<br>
+	<div class="col-md-offset-1 col-md-2">
 		<%= link_to "買い物を続ける", root_path, class:"btn btn-primary" %>
+	</div>
+	<div class="col-md-offset-5 col-md-2">
+		<table class="table table-bordered">
+			<tbody>
+				<th>合計金額</th>
+				<td><%= @sum %></td>
+			</tbody>
+		</table>
+	</div>	
+</div>
+<div class="row">
+	<div class="col-md-offset-5">
+		<%= link_to "注文情報入力画面へ", new_order_path, class:"btn btn-success btn-lg" %>
 	</div>
 </div>
