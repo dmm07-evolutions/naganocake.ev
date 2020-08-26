@@ -6,7 +6,8 @@ class Admin::GenresController < ApplicationController
   	@genres = Genre.all
   end
 
-  #ジャンル新規登録
+
+ #ジャンル新規登録
   def create
   	@genre = Genre.new(genre_params)
   	@genre.save
