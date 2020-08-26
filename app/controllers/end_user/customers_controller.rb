@@ -1,4 +1,5 @@
 class EndUser::CustomersController < ApplicationController
+  # ログインしていないと入れない設定
   before_action :authenticate_customer!
 
 #マイページ

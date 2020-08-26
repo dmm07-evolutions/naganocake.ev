@@ -1,5 +1,6 @@
 class Admin::CustomersController < ApplicationController
-
+  # ログインしていないと入れない設定
+  before_action :authenticate_admin!
   #会員一覧ページ
   def index
   	@customers = Customer.all

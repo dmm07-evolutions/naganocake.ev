@@ -1,6 +1,6 @@
 class Admin::ItemsController < ApplicationController
-
-
+  # ログインしていないと入れない設定
+  before_action :authenticate_admin!
   #商品新規登録ページ
   def new
   	@item = Item.new
