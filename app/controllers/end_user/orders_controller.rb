@@ -50,8 +50,7 @@ class EndUser::OrdersController < ApplicationController
   end
 
   def history_index
-    @orders = Order.all
-
+       @orders = Order.where(customer_id: current_customer.id)
   end
 
   def history_show
