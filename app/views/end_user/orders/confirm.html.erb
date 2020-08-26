@@ -55,6 +55,7 @@
 		<%= f.hidden_field :name, :value => @order.name %>
 		<%= f.hidden_field :shipping_cost, :value => @postage %>
 		<%= f.hidden_field :total_payment, :value => @sum + @postage %>
+		<%= f.hidden_field :address_select, :value => @select %>
 		<%= f.submit "注文確定", class:"btn btn-primary" %>
 	<% end %>
 </div>
