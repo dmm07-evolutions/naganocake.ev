@@ -1,5 +1,6 @@
 class EndUser::CartItemsController < ApplicationController
-
+  # ログインしていないと入れない設定
+  before_action :authenticate_customer!
 #ショッピングカートページ
   def index
     #ログイン中の顧客のカートない商品を取得
