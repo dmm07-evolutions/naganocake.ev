@@ -1,4 +1,8 @@
 class EndUser::OrdersController < ApplicationController
+  # ログインしていないと入れない設定
+  before_action :authenticate_customer!
+  # 他のユーザの詳細ページに飛べない設定
+  before_action :ensure_correct_customer, {only: [:history_show]}
 
   def new
      @order = Order.new
@@ -63,8 +67,7 @@ class EndUser::OrdersController < ApplicationController
   end
 
   def history_index
-
-       @orders = Order.where(customer_id: current_customer.id)
+    @orders = Order.where(customer_id: current_customer.id)
   end
 
   def history_show
@@ -106,6 +109,13 @@ class EndUser::OrdersController < ApplicationController
     params.require(:order).permit(:payment_method, :postal_code, :address, :name, :shipping_cost, :total_payment, :address_select)
   end
 
+  # before_actionで定義しているアクション(他のユーザの詳細ページに飛ばなくする)
+  def ensure_correct_customer
+    @order = Order.find(params[:id])
+    unless @order == current_customer
+      redirect_to root_path
+    end
+  end
 
 
 

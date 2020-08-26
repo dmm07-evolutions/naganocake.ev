@@ -1,5 +1,6 @@
 class Admin::GenresController < ApplicationController
-
+  # ログインしていないと入れない設定
+  before_action :authenticate_admin!
   #ジャンル一覧ページ
   def index
   	@genre = Genre.new
