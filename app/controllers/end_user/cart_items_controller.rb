@@ -18,9 +18,15 @@ class EndUser::CartItemsController < ApplicationController
     #@cart_itemに紐付いているitemの定義（@cart_itemのitem_idにparamsに受け取ったidを代入)
   	@cart_item.item = Item.find(params[:id])
     #@cart_itemをデータベースに保存する
-  	@cart_item.save
-    #商品一覧ページに移行
-  	redirect_to cart_items_path
+  	if @cart_item.save
+      flash[:notice] = "ウホウホ"
+      #商品一覧ページに移行
+    	redirect_to cart_items_path
+    else
+      @genres = Genre.all
+      @item = @cart_item.item
+      render "end_user/items/show"
+    end
   end
 
 #ショッピングカートページの削除ボタンを押したら実行される
@@ -29,8 +35,9 @@ class EndUser::CartItemsController < ApplicationController
   	@cart_item = CartItem.find(params[:id])
     #受け取ったカートない商品のデータを削除する
   	@cart_item.destroy
+    flash[:notice] = "カート内商品変更されました"
     #ショッピングカートページに移行する
-  	redirect_to cart_items_path
+    redirect_to cart_items_path
   end
 
 #カートをからにするボタンを押すと実行される
@@ -39,6 +46,7 @@ class EndUser::CartItemsController < ApplicationController
     @cart_item = CartItem.where(customer_id: current_customer)
     #全て削除
     @cart_item.destroy_all
+    flash[:notice] = "カート内商品を空にしました"
     #ショッピングカートページに移行
     redirect_to cart_items_path
   end
@@ -46,6 +54,7 @@ class EndUser::CartItemsController < ApplicationController
   def quantity
     @cart_item = CartItem.find(params[:id])
     @cart_item.update(cart_item_quantity)
+    flash[:notice] = "#{@cart_item.item.name}の個数を変更しました"
     redirect_to cart_items_path
   end
 

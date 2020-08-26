@@ -1,6 +1,7 @@
 class EndUser::CustomersController < ApplicationController
   # ログインしていないと入れない設定
   before_action :authenticate_customer!
+
 #マイページ
   def show
     #マイページにログイン中のユーザーの情報を渡す
