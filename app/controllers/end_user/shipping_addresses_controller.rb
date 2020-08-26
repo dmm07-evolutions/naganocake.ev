@@ -1,8 +1,8 @@
 class EndUser::ShippingAddressesController < ApplicationController
   def index
   	@shipping_address = ShippingAddress.new
-  	# @shipping_addresses = ShippingAddress.where(customer_id: current_customer.id)
-    @shipping_address = current_customer.shippingAddresses
+  	@shipping_addresses = ShippingAddress.where(customer_id: current_customer.id)
+    #@shipping_address = current_customer.shippingAddresses
   end
 
   def create

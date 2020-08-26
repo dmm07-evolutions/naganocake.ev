@@ -21,6 +21,8 @@ class EndUser::OrdersController < ApplicationController
     @order.customer = current_customer
     #@orderのshipping_costに送料を代入
     @order.shipping_cost = @postage
+
+    @select = params[:order][:address_select]
   end
 
   #注文確定した際、注文情報をデータベースに保存する
@@ -42,6 +44,17 @@ class EndUser::OrdersController < ApplicationController
       @ordered_item.save
       cart_item.destroy
     end
+
+    if params[:order][:address_select] == "2"
+      @shipping_address = ShippingAddress.new
+      @shipping_address.customer = current_customer
+      @shipping_address.postcode = @order.postal_code
+      @shipping_address.address = @order.address
+      @shipping_address.destination = @order.name
+      @shipping_address.save
+    end
+
+
     #thanksページに遷移する
     render "thanks"
   end
@@ -50,6 +63,7 @@ class EndUser::OrdersController < ApplicationController
   end
 
   def history_index
+
        @orders = Order.where(customer_id: current_customer.id)
   end
 
@@ -89,7 +103,7 @@ class EndUser::OrdersController < ApplicationController
 
   #注文確認画面のフォームより送られてくるデータ
   def order_confirm_params
-    params.require(:order).permit(:payment_method, :postal_code, :address, :name, :shipping_cost, :total_payment)
+    params.require(:order).permit(:payment_method, :postal_code, :address, :name, :shipping_cost, :total_payment, :address_select)
   end
 
 
