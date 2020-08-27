@@ -23,6 +23,7 @@
 
 		　　　<div class="text-right quantity">
 			<%= form_for(@cart_item,url:cart_item_path(@item.id), html: {method: :post}) do |f| %>
+			<%= render 'shared/error_messages', { model: f.object } %>
 
 	          <div class="dropdown">
 

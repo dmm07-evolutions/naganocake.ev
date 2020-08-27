@@ -1,4 +1,5 @@
 class EndUser::ShippingAddressesController < ApplicationController
+  before_action :authenticate_customer!
   def index
   	@shipping_address = ShippingAddress.new
   	@shipping_addresses = ShippingAddress.where(customer_id: current_customer.id)
@@ -8,8 +9,14 @@ class EndUser::ShippingAddressesController < ApplicationController
   def create
   	@shipping_address = ShippingAddress.new(shipping_address_params)
   	@shipping_address.customer_id = current_customer.id
-  	@shipping_address.save
-  	redirect_to request.referer
+  	if @shipping_address.save
+      flash[:notice] = "配送先情報を追加しました"
+  	  redirect_to request.referer
+    else
+      @shipping_addresses = ShippingAddress.where(customer_id: current_customer.id)
+      #@shipping_address = current_customer.shippingAddresses
+      render 'index'
+    end
   end
 
   def edit

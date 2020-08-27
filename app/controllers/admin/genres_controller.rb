@@ -1,5 +1,6 @@
 class Admin::GenresController < ApplicationController
-
+  # ログインしていないと入れない設定
+  before_action :authenticate_admin!
   #ジャンル一覧ページ
   def index
   	@genre = Genre.new
@@ -10,8 +11,13 @@ class Admin::GenresController < ApplicationController
  #ジャンル新規登録
   def create
   	@genre = Genre.new(genre_params)
-  	@genre.save
-  	redirect_to admin_genres_path
+  	if @genre.save
+      flash[:notice] = "追加されました"
+  	  redirect_to admin_genres_path
+    else
+      @genres = Genre.all
+      render 'index'
+    end
   end
 
   #ジャンル編集ページ

@@ -2,9 +2,11 @@ class ShippingAddress < ApplicationRecord
 
 	belongs_to :customer
 
-	# validates :postcode, presence: true
-	# validates :address, presennce: true
-	# validates :destination, presence: true
+  validates :customer_id, presence: true
+	validates :postcode, presence: true
+	validates :address, presence: true
+	validates :destination, presence: true
+  validates :address, uniqueness: { scope: [:postcode, :destination] }
 
 
   #郵便番号、住所、宛先をまとめる

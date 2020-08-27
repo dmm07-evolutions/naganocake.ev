@@ -8,6 +8,14 @@ class Customer < ApplicationRecord
   # cart_itemsのアソシエーション
   has_many :cart_items, dependent: :destroy
 
+  validates :first_name, presence: true, length: { in: 1..10}
+  validates :last_name, presence: true, length: { in: 1..10}
+  validates :first_name_kana, presence: true, length: { in: 1..10}
+  validates :last_name_kana, presence: true, length: { in: 1..10}
+  validates :postcode, presence: true, length: { is: 7 }
+  validates :address, presence: true
+  validates :phone_number, presence: true
+
   #退会フラグの判定
   def is_status
   	if is_deleted == true

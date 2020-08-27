@@ -1,6 +1,6 @@
 class Admin::ItemsController < ApplicationController
-
-
+  # ログインしていないと入れない設定
+  before_action :authenticate_admin!
   #商品新規登録ページ
   def new
   	@item = Item.new
@@ -24,10 +24,13 @@ class Admin::ItemsController < ApplicationController
   #商品新規登録
   def create
   	@item = Item.new(item_params)
-  	@item.save
-
-    #商品詳細ページに遷移
-  	redirect_to admin_item_path(@item.id)
+  	if @item.save
+      flash[:notice] = "商品を追加しました"
+      #商品詳細ページに遷移
+    	redirect_to admin_item_path(@item.id)
+    else
+      render 'new'
+    end
   end
 
   #商品編集

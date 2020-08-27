@@ -1,4 +1,6 @@
 class EndUser::ItemsController < ApplicationController
+  # ログインしていないと入れない設定
+  before_action :authenticate_customer!
   def index
   	@items = Item.all.page(params[:page]).per(6)
   	@item = Item.all

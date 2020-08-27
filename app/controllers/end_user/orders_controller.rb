@@ -1,4 +1,8 @@
 class EndUser::OrdersController < ApplicationController
+  # ログインしていないと入れない設定
+  before_action :authenticate_customer!
+  # 他のユーザの詳細ページに飛べない設定
+  before_action :ensure_correct_customer, {only: [:history_show]}
 
   def new
      @order = Order.new
@@ -30,41 +34,42 @@ class EndUser::OrdersController < ApplicationController
     #注文(order)に保存
     @order = Order.new(order_confirm_params)
     @order.customer = current_customer
-    @order.save
-
-    #注文商品(ordered_item)に保存
-    #orderに紐づくordered_itemを配列で取得しeach文で一つずつのデータを保存する
-    current_customer.cart_items.each do |cart_item|
-      @ordered_item = OrderedItem.new
-      @ordered_item.order = @order
-      @ordered_item.item = cart_item.item
-      @ordered_item.price = cart_item.price_tax
-      @ordered_item.quantity = cart_item.quantity
-      @ordered_item.production_status = 0
-      @ordered_item.save
-      cart_item.destroy
+    if @order.save
+      #注文商品(ordered_item)に保存
+      #orderに紐づくordered_itemを配列で取得しeach文で一つずつのデータを保存する
+      current_customer.cart_items.each do |cart_item|
+        @ordered_item = OrderedItem.new
+        @ordered_item.order = @order
+        @ordered_item.item = cart_item.item
+        @ordered_item.price = cart_item.price_tax
+        @ordered_item.quantity = cart_item.quantity
+        @ordered_item.production_status = 0
+        @ordered_item.save
+        cart_item.destroy
+      end
+      #配送先を新しく追加して注文した場合その住所を登録配送先として保存する
+      if params[:order][:address_select] == "2"
+        @shipping_address = ShippingAddress.new
+        @shipping_address.customer = current_customer
+        @shipping_address.postcode = @order.postal_code
+        @shipping_address.address = @order.address
+        @shipping_address.destination = @order.name
+        @shipping_address.save
+      end
+      #thanksページに遷移する
+      render "thanks"
+    else
+      @customer = current_customer
+      @shipping_address = ShippingAddress.where(customer_id: current_customer.id)
+      render 'new'
     end
-
-    if params[:order][:address_select] == "2"
-      @shipping_address = ShippingAddress.new
-      @shipping_address.customer = current_customer
-      @shipping_address.postcode = @order.postal_code
-      @shipping_address.address = @order.address
-      @shipping_address.destination = @order.name
-      @shipping_address.save
-    end
-
-
-    #thanksページに遷移する
-    render "thanks"
   end
 
   def thanks
   end
 
   def history_index
-
-       @orders = Order.where(customer_id: current_customer.id)
+    @orders = Order.where(customer_id: current_customer.id)
   end
 
   def history_show
@@ -106,6 +111,13 @@ class EndUser::OrdersController < ApplicationController
     params.require(:order).permit(:payment_method, :postal_code, :address, :name, :shipping_cost, :total_payment, :address_select)
   end
 
+  # before_actionで定義しているアクション(他のユーザの詳細ページに飛ばなくする)
+  def ensure_correct_customer
+    @order = Order.find(params[:id])
+    unless @order == current_customer
+      redirect_to root_path
+    end
+  end
 
 
 
