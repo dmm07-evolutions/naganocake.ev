@@ -1,0 +1,10 @@
+<td><%= cart_item.item.name %></td>
+<td><%= cart_item.price_tax %></td>
+<td>
+	<%= form_for cart_item, url: cart_item_path(cart_item.id), method: :patch, remote: true do |f| %>
+	<%= f.select :quantity, options_for_select(numbers, { selected: cart_item.quantity.to_i } ) %>
+	<%= f.submit "変更", class:"btn btn-primary btn-sm" %>
+	<% end %>
+</td>
+<td><%= cart_item.subtotal %></td>
+<td><%= link_to "削除", cart_item_path(cart_item.id), method: :delete, class:"btn btn-danger" %></td>

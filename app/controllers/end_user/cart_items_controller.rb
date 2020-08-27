@@ -54,8 +54,13 @@ class EndUser::CartItemsController < ApplicationController
   def quantity
     @cart_item = CartItem.find(params[:id])
     @cart_item.update(cart_item_quantity)
+    @numbers = [0, 1, 2, 3, 4, 5]
+    @sum = 0
+    current_customer.cart_items.each do |cart_item|
+      @sum += cart_item.subtotal
+    end
+    @sum
     flash[:notice] = "#{@cart_item.item.name}の個数を変更しました"
-    redirect_to cart_items_path
   end
 
   private
