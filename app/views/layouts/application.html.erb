@@ -12,13 +12,6 @@
 
 
 <body>
-
-<div class='body'>
-  <%= flash[:notice] %>
-  <div class="container">
-    <%= yield %>
-  </div>
-</div>
       <header class="navbar navbar-fixed-top">
               <a class="logo navbar-left" href="/" data-turbolinks="false" ><%= image_tag ('naganocake.png'), :size => '100x45' %></a>
 
@@ -72,10 +65,13 @@
     </header>
 
 
-            <div>
-                <%= flash[:notice] %>
-                <%= yield %>
-            </div>
+
+  <div class='body'>
+    <%= flash[:notice] %>
+    <div class="container">
+      <%= yield %>
+    </div>
+  </div>
 
     <footer>
               <div>
