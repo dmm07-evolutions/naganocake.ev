@@ -1,5 +1,5 @@
 class Admin::HomesController < ApplicationController
-　# ログインしていないと入れない設定
+  # ログインしていないと入れない設定
   before_action :authenticate_admin!
 
   #管理者側トップページ

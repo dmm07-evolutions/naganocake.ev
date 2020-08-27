@@ -1,5 +1,6 @@
-class EndUser::HomesController < ApplicationController
- # ログインしていないと入れない設定
+ class EndUser::HomesController < ApplicationController
+  # ログインしていないと入れない設定
+
   before_action :authenticate_customer!
   def top
   	@items_all =  Item.all
@@ -9,5 +10,5 @@ class EndUser::HomesController < ApplicationController
   def about
 
   end
-
+  
 end

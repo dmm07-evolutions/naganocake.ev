@@ -17,14 +17,56 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+*{
+	margin: 0px;
+	padding: 0px;
+}
+// body {
+// 	margin-top: 60px;
+// 	background-color: #f0ecba;
+// }
+
+html,  body {
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	margin:0 auto;
+	background-color: #f0ecba;
+}
+
+footer{
+	width: 100%;
+	height:65px;
+	background-color: #E9CEC7;
+	position: absolute;
+	bottom: 0;
+}
+
+footer ul{
+	list-style: none;
+}
+
+footer ul li{
+	display:inline-block;
+	margin-right: 50px;
+	margin-left: 30px;
+}
+
+
 header {
 	color:white;
 	background-color: #E9CEC7;
+	width: 100%;
+	height: 45px;
+	position: fixed;
 }
 
-body {
-	margin-top: 60px;
-	background-color: #f0ecba;
+.container{
+	position: relative;
+	width: 100%;
+	height: auto !important;
+	height: 100%;
+	min-height: 100%;
 }
 
 .table-hover {
@@ -36,13 +78,17 @@ body {
 	width: 100%;
 }
 
-.footer {
-position: absolute;
-bottom: 0;
-width: 100%;
-height: 60px;
-background-color: #16160e;
+.gorira{
+	margin-left: 400px;
 }
+
+// .footer {
+// // position: absolute;
+// // bottom: 0;
+// width: 100%;
+// height: 60px;
+// background-color: #16160e;
+// }
 
 /*paddingフリーで使う*/
 .pt-10 {
@@ -85,5 +131,5 @@ background-color: #16160e;
 }
 
 .left2{
-	margin-left:105px;
+	margin-left:200px;
 }
