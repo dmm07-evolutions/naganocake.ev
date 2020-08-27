@@ -6,20 +6,20 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-adminのsing_inデータ
+# adminのsing_inデータ
 Admin.create!(
 	email: 'test@test.com',
 	password: 'testtest',
 )
 
-# 4.times do |n|
-# Item.create!(
-# 	name:"チョコレートソース#{n+1}",
-# 	explanation:"美味しい美味しいチョコレート",
-# 	genre_id:1,
-# 	price:350,
-# 	)
-# end
+4.times do |n|
+Item.create!(
+	name:"チョコレートソース#{n+1}",
+	explanation:"美味しい美味しいチョコレート",
+	genre_id:1,
+	price:350,
+	)
+end
 
 Category.find_or_create_by(name:"クレーム")
 Category.find_or_create_by(name:"提案")
