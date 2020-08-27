@@ -4,6 +4,7 @@
 			<% @Questionnaires.each do |questionnaires| %>
 				<div class="panel panel-danger ">
 					<div class="panel-heading ">
+					<span>(	&#9734;カテゴリ：<%= questionnaires.category.name %>)</span>
 						<%= questionnaires.title %>
 						<%= link_to edit_questionnaire_path(questionnaires.id) do %>編集
 				       <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
@@ -24,3 +25,5 @@
 		<p>※採用されるとギフト券１万円分もらえます</p>
 		</div>
 	</div>
+
+<!-- eachはfindのように回すと一個づつになる。 -->
