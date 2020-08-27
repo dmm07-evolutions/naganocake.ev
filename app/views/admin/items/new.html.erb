@@ -9,10 +9,8 @@
 		   <%= f.attachment_field :img, class: "img" %>
 	     </div>
 		</div>
-
 		<!-- 商品名・商品説明・ジャンル・税抜き価格・販売ステータス入力 -->
-		<div class="col-sm-8">
-			
+		<div class="col-sm-8">			
 			<%= render 'shared/error_messages', { model: f.object } %>
 			<div class="form-group">
 			 	<%= f.label :name, "商品名", class: "col-sm-2 control-label" %>
