@@ -12,3 +12,8 @@
       </tr>
    </tbody>
 </table>
+<div class="items_search">
+    <%= form_tag(search_path, method: :get) do %>
+        <label>商品名検索<%= text_field_tag(:search) %><%= submit_tag "検索", class: "search-btn" %></label>
+    <% end %>
+</div>
