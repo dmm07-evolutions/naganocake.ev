@@ -1,0 +1,2 @@
+$(".cart_item_<%= @cart_item.id %>").html("<%= j(render 'shared/cart_items', { cart_item: @cart_item, numbers: @numbers }) %>");
+$("#sum").html("<%= j(render 'shared/sum', { sum: @sum }) %>");

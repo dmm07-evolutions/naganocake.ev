@@ -8,6 +8,7 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <%= favicon_link_tag('favicon2.png') %>
   </head>
 
 
@@ -65,8 +66,6 @@
               <% end %>
     </header>
 
-
-
   <div class='body'>
     <%= flash[:notice] %>
     <div class="container">
@@ -74,38 +73,6 @@
     </div>
   </div>
 
-    <footer>
-              <div>
-                <ul>
-                  <li>
-                      <%= link_to "https://about.twitter.com/ja.html",target: :_blank do %>
-                        <%= image_tag "twitter.png",:size =>"65x65" %>
-                      <% end %>
-                  </li>
-                  <li>
-                     <%= link_to "https://about.fb.com/ja/",target: :_blank do %>
-                        <%= image_tag "f_logo.png" ,:size =>"50x50"%>
-                     <% end %>
-                  </li>
-                  <li>
-                     <%= link_to "https://line.me/ja/",target: :_blank do %>
-                        <%= image_tag "line.png",:size =>"45x45" %>
-                     <% end %>
-                  </li>
-                  <li>
-                     <%= link_to "https://www.instagram.com/?hl=ja",target: :_blank do %>
-                        <%= image_tag "insta.png",:size =>"65x65" %>
-                     <% end %>
-                  </li>
-                    <span>&copy;Nagano Cake  .withEvolutions </span>
-                  <li class ="gorira">
-                    <%= link_to "https://www.instagram.com/?hl=ja",target: :_blank do %>
-                        <%= image_tag "gorirataigunn2.png" %>
-                    <% end %>
-                  </li>
-              </ul>
-            </div>
-  </footer>
- </div>
+
 </body>
 </html>
