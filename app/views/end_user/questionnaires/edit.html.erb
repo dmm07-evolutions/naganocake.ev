@@ -1,0 +1,41 @@
+<div class="row">
+<h1>〜お客様の声編集ページ〜回答者の中で毎秋採用された方に10000円分の無料券を渡します<br>※採用数は1ヶ月で100名まで</h1>
+     <!-- どこから贈られてきているか -->
+    <%= form_for(@Questionnaire,url:questionnaire_path, html: {method: :patch}) do |f| %>
+		<div class="form-group">
+		 <%= f.label :title,"題名" %>
+		 <%= f.text_area :title %>
+		</div>
+
+		<div class="form-group">
+		 <%= f.label :body, "内容" %>
+		 <%= f.text_area :body %>
+		</div>
+
+		<!-- 送りたいカラムをtext areaは選ぶ 例title
+			,は後ろがあればつける。---->
+
+        <div class="submitbtn">
+				<%= f.submit "編集", class: "btn btn-primary" %>
+		</div>
+    <% end %>
+
+
+
+
+
+
+
+
+
+<div>
+	<p><b>NaganoCake</b>はお客様の声を第一に考えております</p>
+	<p>品質の向上を考えておりますお客様の直接の意見をできるだけ短じかに感じ良い対応ができるよう</p>
+	<p>お客様気軽に書いて頂ける機能として作成しました。</p>
+	<p>〜ルール〜</p>
+	<p>●1ヶ月の中で300件までとさせてもらいます※それ以上は書き込めません。</p>
+	<p>●次の月には採用したものは対応させていただきます</p>
+	<p>●採用者の方にはlineにて無料券を贈らせていただきます</p>
+	<p>●不可能な事、対応できない事についてもこちら側の意見もはっきりと返答させていただきます。無回答はありません</p>
+	<p>●内容がかぶるものはより良い内容を選ばせてもらいます。</p>
+</div>

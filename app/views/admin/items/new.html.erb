@@ -1,45 +1,52 @@
-<div class="row">
-		<%= form_for(@item,url:admin_items_path, html: {method: :post}) do |f| %>
+
+<div class="container">
+	<div class="row">
+		<%= form_for(@item,url:admin_items_path, html: {method: :post}, class: "form-horizontal") do |f| %>
 		<h3>商品新規登録</h3>
-		<div class="col-md-4">
+		<div class="col-sm-4">
 			<!-- 画像のみ：プレビューまだです。 -->
 		 <div class="field">
 		   <%= f.label :img, "商品画像" %>
 		   <%= f.attachment_field :img, class: "img" %>
 	     </div>
 		</div>
-
 		<!-- 商品名・商品説明・ジャンル・税抜き価格・販売ステータス入力 -->
-		<div class="col-md-4">
-		 <div class="field">
-		 <%= f.label :name, "商品名" %>
-		 <%= f.text_field :name, class: "name" %>
-		</div>
+		<div class="col-sm-8">
 
-		<div class="form-group">
-		 <%= f.label :explanation, "商品説明" %>
-		 <%= f.text_area :explanation, class: "explanation" %>
-		</div>
-
-		 <div class="dropdown">
-		  <%= f.label :genre, "ジャンル" %>
-           <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい" %>
-	     </div>
-
-	     <div class="field">
-		 <%= f.label :price, "税抜価格" %>
-		 <%= f.text_field :price, class: "price" %>円
-		</div>
-
-         <div class="dropdown">
-         　<%= f.label :status, "販売ステータス" %>
-          <%= f.select :status, [["販売中", true],["売り切れ", false]], include_blank: "選択して下さい" %>
-         </div>
-
+			<div class="form-group fix2">
+			 	<%= f.label :name, "商品名", class: "control-label" %>
+			 	<div class="col-sm-5">
+			 		<%= f.text_field :name, class: "form-control name" %>
+			 	</div>
+			</div>
+	        <div class="form-group fix2">
+				<%= f.label :explanation, "商品説明", class: "control-label" %>
+				<div class="col-sm-5">
+					<%= f.text_area :explanation, class: "form-control" %>
+				</div>
+			</div>
+	        <div class="form-group ">
+				<div class="dropdown">
+			 	<%= f.label :genre, "ジャンル", class: "control-label" %>
+	        	<%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい" %>
+	       		</div>
+		    </div>
+		    <div class="form-group">
+				<span class="fix"><%= f.text_field :price, class: "form-control" %></span>
+				<%= f.label :price, "税抜価格(円)", class: "control-label" %>
+			</div>
+		    <div class="form-group">
+	        	<div class="dropdown">
+	         　	<%= f.label :status, "販売ステータス", class: "control-label" %>
+	          	<span class="fix3"><%= f.select :status, [["販売中", true],["売り切れ", false]], include_blank: "選択して下さい" %></span>
+	         	</div>
+	        </div>
          <!-- 新規登録ボタン -->
-          <div class="col-xs-offset-9 col-md-3 submitbtn">
-		<%= f.submit "新規登録", class: "btn btn-primary" %>
-		<% end %>
-     </div>
-</div>
+          	<div class="submitbtn">
+				<%= f.submit "新規登録", class: "btn btn-primary" %>
+     		</div>
+     		<% end %>
+		</div>
+		</div>
+	</div>
 </div>
