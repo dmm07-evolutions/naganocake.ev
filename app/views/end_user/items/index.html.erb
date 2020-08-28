@@ -1,11 +1,19 @@
-	<div class="row">
-		<div class="col-md-2 bg-white radius genre-index">
-		<%= render 'shared/genre'%>
+<div class="row">
+	<div class="col-md-2">
+		<div class="bg-white radius genre-index pd-20">
+			<%= render 'shared/genre'%>
+		</div>
+		<div class="items_search">
+    		<%= form_tag(search_path, method: :get) do %>
+        		<label>商品名検索<%= text_field_tag(:search) %><%= submit_tag "検索", class: "search-btn" %></label>
+    		<% end %>
+		</div>
 	</div>
-		 <div class="col-offset-1 col-md-9 bg-white radius">
-				<!--	unless genre_serch?-->
+	
+	 <div class="col-offset-1 col-md-9 bg-white radius">
+			<!--	unless genre_serch?-->
+		<h3>商品一覧(全<%= @item.count %>件)</h3>
 		<div class="items">
-			<h3>商品一覧(全<%= @item.count %>件)</h3>
 	            <% @items.each do |item| %>
 	            <div class="item">
 			       <%= link_to item_path(item) do %>
@@ -19,7 +27,7 @@
 	</div>
 </div>
 <div class="col-md-offset-10">
-<%= paginate @items %>
+	<%= paginate @items %>
 </div>
 
 <!-- レイアウト　画像の間隔を横並びのまま開けたい -->
