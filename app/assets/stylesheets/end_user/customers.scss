@@ -1,3 +1,51 @@
 // Place all the styles related to the end_user/customers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+.table-height {
+	line-height: 30px;
+}
+
+.bg-white {
+	background-color: white;
+}
+
+.bg-gray {
+	background-color: gray;
+}
+
+.bg-pink1 {
+	background-color: #fff0f5;
+}
+
+.bg-pink2 {
+	background-color: #ffe4e1;
+}
+
+.title-info {
+	display: inline-block;
+	font-weight: 800;
+	padding-right: 50px;
+}
+
+.mypege {
+	font-weight: 900;
+}
+
+.title-index {
+	font-weight: 800;
+}
+
+.inline {
+	display: inline;
+}
+
+.radius {
+	border-radius: 60px;
+}
+
+.indent {
+	text-indent: 1em;
+}
