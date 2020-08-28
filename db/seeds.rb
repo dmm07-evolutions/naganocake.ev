@@ -20,3 +20,8 @@ Item.create!(
 	price:350,
 	)
 end
+
+Category.find_or_create_by(name:"クレーム")
+Category.find_or_create_by(name:"提案")
+Category.find_or_create_by(name:"改善案")
+Category.find_or_create_by(name:"お客様の声")

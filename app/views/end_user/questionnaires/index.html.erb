@@ -1,0 +1,29 @@
+	<div class="row">
+		 <div class="col-sm-4">
+			<h1>お客様意見</h1>
+			<% @Questionnaires.each do |questionnaires| %>
+				<div class="panel panel-danger ">
+					<div class="panel-heading ">
+					<span>(	&#9734;カテゴリ：<%= questionnaires.category.name %>)</span>
+						<%= questionnaires.title %>
+						<%= link_to edit_questionnaire_path(questionnaires.id) do %>編集
+				       <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+				       <% end %>
+		               <%= link_to questionnaire_path(questionnaires.id), method: :delete do %>削除<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+	               <% end %>
+					</div>
+
+					<div class="panel-body ">
+						<%= questionnaires.body %>
+					</div>
+				</div>
+
+				<!-- allで回ってきているから.allはいらないか？ -->
+				<!-- カラム名を.で指定する。 -->
+			<% end %>
+		<%= link_to '改善案提案',new_questionnaire_path, class: 'btn btn-info' %></td>
+		<p>※採用されるとギフト券１万円分もらえます</p>
+		</div>
+	</div>
+
+<!-- eachはfindのように回すと一個づつになる。 -->

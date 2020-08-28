@@ -31,6 +31,8 @@ Rails.application.routes.draw do
     resources :orders, only: [:new, :create]
     post 'orders/confirm' => 'orders#confirm'
     get 'genres/:id' => 'genres#show', as: 'genre_items'
+    resources :questionnaires, only: [:index,:new,:edit,:create,:update,:destroy]
+
 
   end
 
