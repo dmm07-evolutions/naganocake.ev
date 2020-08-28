@@ -28,10 +28,13 @@ class Item < ApplicationRecord
 		price_tax.round
 	end
 
+    # searchで検索した商品を取り出す
 	def self.search(search)
 	  if search
+	  	# 商品名に部分一致した商品のデータを@itemsに代入
 	  	@items = Item.where("name LIKE?","%#{search}%")
 	  else
+	  	# 商品の全てのデータを@itemsに代入
 	  	@items = Item.all
 	  end
 	end

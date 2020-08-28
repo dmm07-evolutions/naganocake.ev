@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     get 'orders/history/:id' => 'orders#history_show', as: 'history'
     resources :orders, only: [:new, :create]
     post 'orders/confirm' => 'orders#confirm'
+    get 'genres/:id' => 'genres#show', as: 'genre_items'
 
   end
 
