@@ -8,6 +8,8 @@ class Customer < ApplicationRecord
   # cart_itemsのアソシエーション
   has_many :cart_items, dependent: :destroy
 
+  has_many :orders, dependent: :destroy
+
   validates :first_name, presence: true, length: { in: 1..10}
   validates :last_name, presence: true, length: { in: 1..10}
   validates :first_name_kana, presence: true, length: { in: 1..10}
