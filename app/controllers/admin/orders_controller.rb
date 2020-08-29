@@ -2,16 +2,12 @@ class Admin::OrdersController < ApplicationController
   # ログインしていないと入れない設定
   before_action :authenticate_admin!
   def index
-<<<<<<< HEAD
     if params[:customer_id]
       customer = Customer.find(params[:customer_id])
       @orders = customer.orders
     else
       @orders = Order.all
     end
-=======
-  	 @orders = Order.all.order(created_at: "DESC")
->>>>>>> d35586c45c008e28c99f240bdd7af5b3a4b59833
   end
 
   def show

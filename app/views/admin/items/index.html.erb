@@ -19,7 +19,7 @@
 				<tr>
 					<td><%= item.id %></td>
 					<td><%= link_to item.name, admin_item_path(item) %></td>
-					<td><%= item.price %></td>
+					<td><%= item.price.to_s(:delimited) %>円</td>
 					<td><%= item.genre.name %></td>
 					<td><%= item.status_text %></td>
 					<td><%= link_to "削除", admin_item_path(item), method: :delete, class:"btn btn-danger" %></td>

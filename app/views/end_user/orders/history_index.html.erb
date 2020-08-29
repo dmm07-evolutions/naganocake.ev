@@ -31,7 +31,7 @@
 					    		    <%= ordered_item.item.name %><br>
 					    		<% end %>
 					    	</td>
-					    	<td><%= order.total_payment %>円</td>
+					    	<td><%= order.total_payment.to_s(:delimited) %>円</td>
 					    	<td><%= order.status %></td>
 					    	<td><%= link_to '表示する',history_path(order), class: 'btn btn-info' %></td>
 					    </tr>
