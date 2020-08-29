@@ -6,24 +6,14 @@
 		 <%= f.label :title, "題名" %>
 		 <%= f.text_area :title %>
 		</div>
-
+        <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: "選択して下さい" %>
 		<div class="form-group">
 		 <%= f.label :body, "内容" %>
 		 <%= f.text_area :body %>
 		</div>
-
-         <div class="submitbtn">
-				<%= f.submit "投稿・応募する", class: "btn btn-primary" %>
-		</div>
+		　<%= f.submit "投稿・応募する", class: "btn btn-primary" %>
     <% end %>
-
 <!-- 送りたい先のパス今回だとcreate -->
-
-
-
-
-
-
 
 
 
@@ -40,7 +30,7 @@
 
 <div>
 	<p><b>NaganoCake</b>はお客様の声を第一に考えております</p>
-	<p>品質の向上を考えておりますお客様の直接の意見をできるだけ短じかに感じ良い対応ができるよう</p>
+	<p>品質の向上を考えておりますお客様の直接の意見をできるだけ身近に感じ良い対応ができるよう</p>
 	<p>お客様気軽に書いて頂ける機能として作成しました。</p>
 	<p>〜ルール〜</p>
 	<p>●1ヶ月の中で300件までとさせてもらいます※それ以上は書き込めません。</p>

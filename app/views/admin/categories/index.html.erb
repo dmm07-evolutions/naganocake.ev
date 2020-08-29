@@ -1,0 +1,80 @@
+<h2>&#9734;クレーム</h2>
+	<% @questionnaires1.each do |questionnaires| %>
+		<div class="panel panel-danger ">
+			<div class="panel-heading ">
+			<span>(	&#9734;カテゴリ：<%= questionnaires.category.name %>)&emsp;</span>
+				<%= questionnaires.title %>
+				<%= link_to edit_questionnaire_path(questionnaires.id) do %>編集
+		       <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+		       <% end %>
+               <%= link_to questionnaire_path(questionnaires.id), method: :delete do %>削除<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+              <% end %>
+			</div>
+
+			<div class="panel-body ">
+				<%= questionnaires.body %>
+			</div>
+		</div>
+				<!-- allで回ってきているから.allはいらないか？ -->
+				<!-- カラム名を.で指定する。 -->
+    <% end %>
+　　<h2>&#9734;提案</h2>
+	<% @questionnaires2.each do |questionnaires| %>
+		<div class="panel panel-danger ">
+			<div class="panel-heading ">
+			<span>(	&#9734;カテゴリ：<%= questionnaires.category.name %>)&emsp;</span>
+				<%= questionnaires.title %>
+				<%= link_to edit_questionnaire_path(questionnaires.id) do %>編集
+		       <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+		       <% end %>
+               <%= link_to questionnaire_path(questionnaires.id), method: :delete do %>削除<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+              <% end %>
+			</div>
+
+			<div class="panel-body ">
+				<%= questionnaires.body %>
+			</div>
+		</div>
+				<!-- allで回ってきているから.allはいらないか？ -->
+				<!-- カラム名を.で指定する。 -->
+    <% end %>
+　　<h2>&#9734;改善案</h2>
+	<% @questionnaires3.each do |questionnaires| %>
+		<div class="panel panel-danger ">
+			<div class="panel-heading ">
+			<span>(	&#9734;カテゴリ：<%= questionnaires.category.name %>)&emsp;</span>
+				<%= questionnaires.title %>
+				<%= link_to edit_questionnaire_path(questionnaires.id) do %>編集
+		       <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+		       <% end %>
+               <%= link_to questionnaire_path(questionnaires.id), method: :delete do %>削除<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+              <% end %>
+			</div>
+
+			<div class="panel-body ">
+				<%= questionnaires.body %>
+			</div>
+		</div>
+				<!-- allで回ってきているから.allはいらないか？ -->
+				<!-- カラム名を.で指定する。 -->
+    <% end %>
+　　<h2>&#9734;お客様の声</h2>
+	<% @questionnaires4.each do |questionnaires| %>
+		<div class="panel panel-danger ">
+			<div class="panel-heading ">
+			<span>(	&#9734;カテゴリ：<%= questionnaires.category.name %>)&emsp;</span>
+				<%= questionnaires.title %>
+				<%= link_to edit_questionnaire_path(questionnaires.id) do %>編集
+		       <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+		       <% end %>
+               <%= link_to questionnaire_path(questionnaires.id), method: :delete do %>削除<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+              <% end %>
+			</div>
+
+			<div class="panel-body ">
+				<%= questionnaires.body %>
+			</div>
+		</div>
+				<!-- allで回ってきているから.allはいらないか？ -->
+				<!-- カラム名を.で指定する。 -->
+    <% end %>

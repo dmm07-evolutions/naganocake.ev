@@ -57,7 +57,7 @@ class EndUser::OrdersController < ApplicationController
         @shipping_address.save
       end
       #thanksページに遷移する
-      render "thanks"
+      redirect_to orders_thanks_path
     else
       @customer = current_customer
       @shipping_address = ShippingAddress.where(customer_id: current_customer.id)
