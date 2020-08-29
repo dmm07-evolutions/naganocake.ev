@@ -18,7 +18,7 @@
 			<div class="recommend">
 				<h3 class="title-osusume">オススメ商品</h3>
 	        <div class="parent">
-	          <% @items_all.last(6).each do |i| %>
+	          <% @items.last(6).each do |i| %>
 		          <div class="child">
 			          <%= link_to item_path(i) do %>
 				        <%=attachment_image_tag(i,:img ,:fill,300,300,fallback:"noimg.jpg",size:"240x240") %>
