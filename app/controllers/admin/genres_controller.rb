@@ -28,8 +28,18 @@ class Admin::GenresController < ApplicationController
   #ジャンル編集（有効・無効設定）
   def update
   	@genre = Genre.find(params[:id])
-  	@genre.update(genre_params)
-  	redirect_to admin_genres_path
+  	if @genre.update(genre_params)
+      flash[:notice] = "ジャンル情報を更新しました"
+      CartItem.all.each do |cart_item|
+        #無効にしたジャンルの商品がカートに入れられているときそのカート商品を削除する
+        if cart_item.item.genre.is_active == false
+          cart_item.destroy
+        end
+      end
+      redirect_to admin_genres_path
+    else
+      render 'edit'
+    end
   end
 
   private

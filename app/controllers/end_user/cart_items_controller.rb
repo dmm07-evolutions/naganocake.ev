@@ -6,7 +6,7 @@ class EndUser::CartItemsController < ApplicationController
     #ログイン中の顧客のカートない商品を取得
   	#@cart_item = CartItem.where(customer_id: current_customer)
     @cart_items = current_customer.cart_items
-    @numbers = [0, 1, 2, 3, 4, 5]
+    @numbers = [*1..100]
   end
 
 #アイテム詳細ページのカートに入れるボタンを押したら実行される。
@@ -17,15 +17,31 @@ class EndUser::CartItemsController < ApplicationController
   	@cart_item.customer_id = current_customer.id
     #@cart_itemに紐付いているitemの定義（@cart_itemのitem_idにparamsに受け取ったidを代入)
   	@cart_item.item = Item.find(params[:id])
-    #@cart_itemをデータベースに保存する
-  	if @cart_item.save
-      flash[:notice] = "ウホウホ"
-      #商品一覧ページに移行
-    	redirect_to cart_items_path
+    #同じ商品が既にカート内に入っていないか
+    @cart = CartItem.find_by(customer_id: @cart_item.customer_id, item_id: @cart_item.item.id)
+    if @cart.nil?
+      #カート内に選択した商品が入っていない場合新たにカート内に入れる
+      if @cart_item.save
+        flash[:notice] = "カートに追加しました"
+        #商品一覧ページに遷移
+        redirect_to cart_items_path
+      else
+        @genres = Genre.all
+        @item = @cart_item.item
+        render "end_user/items/show"
+      end
+     #カート内に選択した商品が入っていた場合個数のみを加算する
     else
-      @genres = Genre.all
-      @item = @cart_item.item
-      render "end_user/items/show"
+      @cart.quantity += params[:cart_item][:quantity].to_i
+      if @cart.save
+        flash[:notice] = "カートに追加しました"
+        #商品一覧ページに遷移
+        redirect_to cart_items_path
+      else
+        @genres = Genre.all
+        @item = @cart_item.item
+        render "end_user/items/show"
+      end
     end
   end
 
@@ -54,7 +70,7 @@ class EndUser::CartItemsController < ApplicationController
   def quantity
     @cart_item = CartItem.find(params[:id])
     @cart_item.update(cart_item_quantity)
-    @numbers = [0, 1, 2, 3, 4, 5]
+    @numbers = [*1..100]
     @sum = 0
     current_customer.cart_items.each do |cart_item|
       @sum += cart_item.subtotal
@@ -68,7 +84,7 @@ class EndUser::CartItemsController < ApplicationController
    def cart_item_params
    	params.require(:cart_item).permit(:quantity)
    end
-
+#個数変更時のparams
    def cart_item_quantity
     params.require(:cart_item).permit(:quantity)
    end
