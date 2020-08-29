@@ -5,3 +5,33 @@
 .thanks {
 	margin-top: 300px;
 }
+
+.table-back {
+	background-color: rgba(255,255,255,0.8);
+	border: 3px #deb887 solid;
+}
+
+.history-title {
+	background-color: rgba(255,255,255,0.8);
+	display: inline-block;
+	border-radius: 60px 0 0 0;
+	padding: 0 20px;
+	padding-right: 150px;
+	border: 3px #deb887 solid;
+}
+
+.order-new-back {
+	background-color: rgba(255,255,255,0.8);
+	border-top: 10px #deb887 double;
+	border-bottom: 10px #deb887 double;
+	border-left: 50px #deb887 solid;
+	padding: 20px 0;
+}
+
+.order-histry-back {
+	background-color: rgba(255,255,255,0.8);
+	border-top: 10px #deb887 double;
+	border-bottom: 10px #deb887 double;
+	padding: 20px 0;
+	border-radius: 60px;
+}

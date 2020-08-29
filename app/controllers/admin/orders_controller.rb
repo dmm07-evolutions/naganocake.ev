@@ -2,7 +2,7 @@ class Admin::OrdersController < ApplicationController
   # ログインしていないと入れない設定
   before_action :authenticate_admin!
   def index
-  	 @orders = Order.all
+  	 @orders = Order.all.order(created_at: "DESC")
   end
 
   def show
