@@ -1,0 +1,61 @@
+	<div class="row">
+		<h3>注文情報入力</h3>
+		<!-- cart_itemの情報を表示するtable -->
+		<div class="col-md-offser-1 col-md-5">
+			<table class="table table-hover table-inverse">
+				<thead>
+				    <tr>
+					  <th>商品名</th>
+					  <th>単価(税込み)</th>
+					  <th>数量</th>
+					  <th>小計</th>
+				    </tr>
+			    </thead>
+				<tbody>
+					<!--合計金額の定義　-->
+					<% @sum = 0 %>
+					<!-- 送料の定義 -->
+					<% @postage = 800 %>
+					<!-- カート内商品のデータ呼び出し -->
+					<% @cart_item.each do |cart_item| %>
+					<tr>
+						<!-- -->
+					    <td><%=attachment_image_tag(cart_item.item,:img,:fill,50,50,fallback:"noimg.jpg",size:"50x50") %><%= cart_item.item.name %></td>
+					    <!-- -->
+					    <td><%= cart_item.price_tax %></td>
+					    <!-- -->
+					    <td><%= cart_item.quantity %></td>
+                        <!-- -->
+					    <td><%= cart_item.subtotal %></td>
+				    </tr>
+				    <!-- 合計金額　（小計の合計） -->
+				    <% @sum += cart_item.subtotal %>
+				    <% end %>
+				</tbody>
+
+				<table class="table">
+					<tbody>
+						<tr>
+							<th>送料</th>
+							<td><%= @postage %></td>
+						</tr>
+						<tr>
+							<th>商品合計</th>
+							<td><%= @sum %></td>
+						</tr>
+						<tr>
+							<th>請求金額</th>
+							<td><%= @sum + @postage %></td>
+						</tr>
+					</tbody>
+				</table>
+		</div>
+		<!-- Crart_itemの情報を表示するtable.2 -->
+		<div class="col-md-offset-2 col-md-3">
+		</div>
+
+		<!-- 支払い情報・お届け先情報表示 -->
+		<div class="">
+
+		</div>
+	</div>

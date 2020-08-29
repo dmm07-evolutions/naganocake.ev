@@ -1,0 +1,51 @@
+
+	<div class="row customer-back">
+		<div class="col-md-offset-1 col-md-8">
+			<h2 class="mypege">マイページ</h2>
+			<h3 class="title-info">登録情報</h3>
+				<%= link_to edit_customer_registration_path, class:"btn btn-primary btn-sm"  do %>→push編集<span class="glyphicon glyphicon-log-in" aria-hidden="true"></span></i>
+				<% end %>
+				<%= link_to "", class:"btn btn-primary btn-sm"  do %>→pushパスワード更新<span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+				<% end %>
+				
+			<div class="row pt-10">
+				<!-- 登録情報 -->
+				<table class="table-bordered">
+					<therd>
+						<tr class="table-height">
+							<th class="col-md-2 bg-pink2">氏名</th>
+							<td class="col-md-5 bg-pink1"><%= @customer.full_name %></td>
+						</tr>
+						<tr class="table-height bg-white">
+							<th class="col-md-2 bg-pink2">カナ</th>
+							<td class="col-md-5 bg-pink1"><%= @customer.full_name_kana %></td>
+						</tr>
+						<tr class="table-height bg-white">
+							<th class="col-md-2 bg-pink2">郵便番号</th>
+							<td class="col-md-5 bg-pink1"><%= @customer.postcode %></td>
+						</tr>
+						<tr class="table-height bg-white">
+							<th class="col-md-2 bg-pink2">住所</th>
+							<td class="col-md-5 bg-pink1"><%= @customer.address %></td>
+						</tr>
+						<tr class="table-height bg-white">
+							<th class="col-md-2 bg-pink2">電話番号</th>
+							<td class="col-md-5 bg-pink1"><%= @customer.phone_number %></td>
+						</tr>
+						<tr class="table-height bg-white">
+							<th class="col-md-2 bg-pink2">メールアドレス</th>
+							<td class="col-md-5 bg-pink1"><%= @customer.email %></td>
+						</tr>
+					</therd>
+				</table>
+			</div>
+			<h3 class="title-index">配送先一覧</h3>
+			<%= link_to shipping_addresses_path, class:"btn btn-primary"  do %>一覧を見る<span class="glyphicon glyphicon-apple" aria-hidden="true"></span>
+			<% end %>
+			<h3 class="title-index">注文履歴</h3>
+			<%= link_to orders_history_path, class:"btn btn-primary" do %>一覧を見る<span class="glyphicon glyphicon-apple" aria-hidden="true"></span>
+			<% end %>
+		</div>
+	</div>
+
+

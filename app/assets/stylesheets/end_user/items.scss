@@ -1,0 +1,30 @@
+// Place all the styles related to the end_user/items controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.items {
+	display: grid;
+    grid-template-columns: 200px 200px;
+    justify-content: space-around;
+    gap: 40px;
+}
+
+.item-show {
+	margin-top: 50px;
+}
+
+.quantity {
+	margin-top: 120px;
+}
+
+.genre-index {
+	padding: 30px 0;
+}
+
+.item-back {
+	background-color: rgba(255,255,255,0.9);
+	border-radius: 60px;
+	border: 10px #deb887 solid;
+	padding: 20px;
+}
+

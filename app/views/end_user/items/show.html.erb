@@ -1,0 +1,39 @@
+<!-- 真ん中にback-groundimage -->
+<div class="row">
+	<div class="col-md-2 item-back">
+	<%= render 'shared/genre'%>
+    </div>
+    <div class="item-show">
+		<div class="col-md-offset-1 col-md-8">
+			<div class="row  item-back">
+				<div class="col-md-4">
+					<td><%= attachment_image_tag(@item,:img,:fill,300,300,fallback:"noimg.jpg",size:"250x250") %></td>
+				</div>
+		        <div class="col-md-4">
+					<div class="item-name">
+						<h2><%=@item.name%></h2>
+					</div>
+					<div class="item-explanation">
+						<%=@item.explanation%>
+					</div>
+					<div class="item-price">
+						<h4>¥<%=@item.price_tax%><small>(税込)</small></h4>
+					</div>
+					<div class="text-right quantity">
+						<%= form_for(@cart_item,url:cart_item_path(@item.id), html: {method: :post}) do |f| %>
+						<%= render 'shared/error_messages', { model: f.object } %>
+				        <div class="dropdown">
+				           <%= f.select :quantity, [["1個",1],["2個",2],["3個",3],["4個",4],["5個",5],["6個",6],["7個",7],["8個",8],["9個",9 ]] ,include_blank: "個数選択" %>個
+				           <%= f.submit "カートに入れる" %>
+			            </div>
+			            <%end%>
+			        </div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- レイアウトを整えたい　横並びにしたい　位置直したい -->
+<!-- ドロップダウンを.timeで短くできるか？ -->
+<!-- スモールタグいらないかもしれない -->

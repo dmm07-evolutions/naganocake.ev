@@ -1,15 +1,82 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>NaganocakeEv</title>
+    <title>ながのCAKE</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <%= favicon_link_tag('favicon2.png') %>
   </head>
 
-  <body>
-    <%= yield %>
-  </body>
+
+<body>
+      <header class="navbar navbar-fixed-top">
+              <a class="logo navbar-left" href="/" data-turbolinks="false" ><%= image_tag ('naganocake.png'), :size => '100x45' %></a>
+
+              <% if customer_signed_in? %>
+                <nav>
+                  <ul class="nav navbar-nav navbar-right">
+                      <li><%= link_to customers_path do %>マイページ<span class="glyphicon glyphicon-user" aria-hidden="true"></span><% end %></li>
+                      <li><%= link_to items_path do %>商品一覧<span class="glyphicon glyphicon-book" aria-hidden="true"></span><% end %></li>
+                      <li><%= link_to cart_items_path do %>カート<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+                     <% end %></a></li>
+                       <li><%= link_to questionnaires_path do %>お客様の声.ギフト<span class="glyphicon glyphicon-usd" aria-hidden="true"></span><% end %></li>
+                     <li><%= link_to destroy_customer_session_path, method: :delete do %>ログアウト<span class="glyphicon glyphicon-hand-left" aria-hidden="true"></span>
+                     <% end %></li>
+                  </ul>
+                </nav>
+                    <% elsif admin_signed_in? %>
+                <nav>
+                  <ul class="nav navbar-nav navbar-right">
+                      <li><%= link_to admin_items_path do %>商品一覧<span class="glyphicon glyphicon-th-large" aria-hidden="true"></span><% end %></li>
+                      <li><%= link_to admin_customers_path do %>会員一覧<span class="glyphicon glyphicon-user" aria-hidden="true"></span><% end %></li>
+                      <li><%= link_to admin_orders_path do %>注文履歴一覧<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span><% end %></li>
+                      <li><%= link_to admin_genres_path do %>ジャンル一覧<span class="glyphicon glyphicon-stop" aria-hidden="true"></span><% end %></li>
+                      <li><%= link_to destroy_admin_session_path, method: :delete do %>ログアウト<span class="glyphicon glyphicon-hand-left" aria-hidden="true"></span>
+                        <% end %>
+                  </ul>
+                </nav>
+             <% else %>
+                <nav>
+                  <ul class="nav navbar-nav navbar-right">
+                      <li><%= link_to homes_about_path do %>About<span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span>
+                          <% end %>
+                      </li>
+                      <!-- ログイン前にadminの商品一覧が見れるのは危険？なので、customerの方を表示 -->
+                      <li><%= link_to items_path do %> 商品一覧<span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>
+                            <% end %>
+                      </li>
+                      <!-- adminは新規登録がないため、customerの新規登録画面（sign_up）に飛ぶ -->
+                      <li><%= link_to new_customer_registration_path do %>新規登録<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+                          <% end %>
+                      </li>
+                      <!-- adminのログイン画面に遷移させたほうがいい？？ -->
+                      <li><%= link_to new_customer_session_path do %>ログイン<span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>
+                            <% end %>
+                      </li>
+                      <li><%= link_to new_admin_session_path do %>管理者ログイン<span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>
+                              <% end %>
+                      </li>
+                  </ul>
+                </nav>
+              <% end %>
+    </header>
+    <div class="gorilla_stage">
+      <div class="gorilla_wrap" data-order="right" data-turbolinks="false">
+          <%= link_to "" , homes_gorilla_path, class:"gorilla_item anime" %>
+      </div>
+    </div>
+
+  <div class='body'>
+    <%= flash[:notice] %>
+    <div class="container">
+      <%= yield %>
+    </div>
+  </div>
+
+
+</body>
 </html>
