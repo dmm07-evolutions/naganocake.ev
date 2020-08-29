@@ -10,5 +10,8 @@
   def about
 
   end
+
+  def gorilla
+  end
   
 end

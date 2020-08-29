@@ -37,7 +37,6 @@
                       <li><%= link_to admin_genres_path do %>ジャンル一覧<span class="glyphicon glyphicon-stop" aria-hidden="true"></span><% end %></li>
                       <li><%= link_to destroy_admin_session_path, method: :delete do %>ログアウト<span class="glyphicon glyphicon-hand-left" aria-hidden="true"></span>
                         <% end %>
-                      </li>questionnaires_path
                   </ul>
                 </nav>
              <% else %>
@@ -66,8 +65,8 @@
               <% end %>
     </header>
     <div class="gorilla_stage">
-      <div class="gorilla_wrap" data-order="right">
-          <a href="homes/about" class="gorilla_item anime"></a>
+      <div class="gorilla_wrap" data-order="right" data-turbolinks="false">
+          <a href="homes/gorilla" class="gorilla_item anime"></a>
       </div>
     </div>
 
