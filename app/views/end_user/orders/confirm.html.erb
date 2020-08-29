@@ -1,6 +1,6 @@
-<div class="row">
+<div class="row order-new-back">
 	<h2>注文確認画面</h2>
-	<div class="col-md-6">
+	<div class="col-md-7">
 		<table class="table">
 			<thead>
 				<tr>
@@ -47,6 +47,9 @@
 			</tbody>
 		</table>
 	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
 	<!-- 注文情報をコントローラーに受け渡すための記述 -->
 	<%= form_for(@order, url: orders_path, html: {method: :post}) do |f| %>
 		<%= f.hidden_field :payment_method, :value => @order.payment_method %>
@@ -56,6 +59,7 @@
 		<%= f.hidden_field :shipping_cost, :value => @postage %>
 		<%= f.hidden_field :total_payment, :value => @sum + @postage %>
 		<%= f.hidden_field :address_select, :value => @select %>
-		<%= f.submit "注文確定", class:"btn btn-primary" %>
+		<%= f.submit "注文確定", class:"btn btn-primary btn-lg center-block" %>
 	<% end %>
+	</div>
 </div>
