@@ -1,6 +1,19 @@
 // Place all the styles related to the end_user/orders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+// .thanks {
+// 	margin-top: 300px;
+// }
+
+.thanks-image{
+	width: 1000px;
+	height: 600px;
+	background-image: image-url('thnx-page.png');
+	background-size: cover;
+	background-position: bottom center;
+	border: 7px #8b4513 solid;
+	border-radius: 10px;
+}
 
 .thanks {
 	margin-top: 300px;
@@ -35,3 +48,4 @@
 	padding: 20px 0;
 	border-radius: 60px;
 }
+
