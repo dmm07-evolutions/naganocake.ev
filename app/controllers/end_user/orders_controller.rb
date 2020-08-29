@@ -114,7 +114,7 @@ class EndUser::OrdersController < ApplicationController
   # before_actionで定義しているアクション(他のユーザの詳細ページに飛ばなくする)
   def ensure_correct_customer
     @order = Order.find(params[:id])
-    unless @order == current_customer
+    unless @order.customer == current_customer
       redirect_to root_path
     end
   end
