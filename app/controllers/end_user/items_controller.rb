@@ -1,14 +1,14 @@
 class EndUser::ItemsController < ApplicationController
  
   def index
-  	@items = Item.all.page(params[:page]).per(6)
-  	@item = Item.all
-  	@genres = Genre.all
+    #商品ステータスが"販売中"かつジャンルが"有効"である商品を取得
+  	@items = Item.where(status: true).joins(:genre).where(genres: { is_active: true }).page(params[:page]).per(6)
+  	@genres = Genre.where(is_active: true)
   end
 
   def show
   	@item = Item.find(params[:id])
-    @genres = Genre.all
+    @genres = Genre.where(is_active: true)
   	@cart_item = CartItem.new
   end
 
