@@ -1,16 +1,18 @@
 class EndUser::QuestionnairesController < ApplicationController
 	# aboutに書いてもいい？
 	def index
-       @Questionnaires = Questionnaire.all
+       # @category= Category.find(4)
+       @questionnaires = Questionnaire.all
 	end
 	def new
 		@Questionnaire = Questionnaire.new
+        @Categories = Category.all
     end
 
 	def create
 		@Questionnaires = Questionnaire.new(questionnaires_params)
 		@Questionnaires.save
-		redirect_to questionnaires_path
+		redirect_to root_path
 		# redirect_to questionnaires_pathこれを書かないとcareate htmlページを探しちゃう
     end
 
@@ -24,7 +26,7 @@ class EndUser::QuestionnairesController < ApplicationController
     	# ※どのidのレコードを見つけてくるか？
     	@Questionnaire.update(questionnaires_params)
     	# タイトルとボディーをかえますよ
-    	redirect_to questionnaires_path
+    	redirect_to root_path
     end
 
     def destroy
@@ -37,6 +39,7 @@ class EndUser::QuestionnairesController < ApplicationController
     private
 
     def questionnaires_params
-    	params.require(:questionnaire).permit(:title, :body)
+    	params.require(:questionnaire).permit(:title, :body ,:category_id)
     end
 end
+# categryは紐づいているから書かなくてもいけるの？

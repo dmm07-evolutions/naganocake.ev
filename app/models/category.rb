@@ -1,3 +1,3 @@
 class Category < ApplicationRecord
-	has_many :categories, dependent: :destroy
+	has_many :questionnaires, dependent: :destroy
 end

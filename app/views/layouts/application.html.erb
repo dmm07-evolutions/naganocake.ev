@@ -23,7 +23,7 @@
                       <li><%= link_to items_path do %>商品一覧<span class="glyphicon glyphicon-book" aria-hidden="true"></span><% end %></li>
                       <li><%= link_to cart_items_path do %>カート<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
                      <% end %></a></li>
-                       <li><%= link_to questionnaires_path do %>お客様の声.ギフト<span class="glyphicon glyphicon-usd" aria-hidden="true"></span><% end %></li>
+                       <li><%= link_to questionnaires_path do %>お客様メッセージ一覧 <span class="glyphicon glyphicon-glass" aria-hidden="true"></span><% end %></li>
                      <li><%= link_to destroy_customer_session_path, method: :delete do %>ログアウト<span class="glyphicon glyphicon-hand-left" aria-hidden="true"></span>
                      <% end %></li>
                   </ul>
@@ -35,6 +35,7 @@
                       <li><%= link_to admin_customers_path do %>会員一覧<span class="glyphicon glyphicon-user" aria-hidden="true"></span><% end %></li>
                       <li><%= link_to admin_orders_path do %>注文履歴一覧<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span><% end %></li>
                       <li><%= link_to admin_genres_path do %>ジャンル一覧<span class="glyphicon glyphicon-stop" aria-hidden="true"></span><% end %></li>
+                      <li><%= link_to admin_category_path do %>お客様声・ギフト <span class="glyphicon glyphicon-glass" aria-hidden="true"></span><% end %></li>
                       <li><%= link_to destroy_admin_session_path, method: :delete do %>ログアウト<span class="glyphicon glyphicon-hand-left" aria-hidden="true"></span>
                         <% end %>
                   </ul>

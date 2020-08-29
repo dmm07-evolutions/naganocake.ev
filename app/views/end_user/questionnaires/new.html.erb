@@ -6,24 +6,14 @@
 		 <%= f.label :title, "題名" %>
 		 <%= f.text_area :title %>
 		</div>
-
+        <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: "選択して下さい" %>
 		<div class="form-group">
 		 <%= f.label :body, "内容" %>
 		 <%= f.text_area :body %>
 		</div>
-
-         <div class="submitbtn">
-				<%= f.submit "投稿・応募する", class: "btn btn-primary" %>
-		</div>
+		　<%= f.submit "投稿・応募する", class: "btn btn-primary" %>
     <% end %>
-
 <!-- 送りたい先のパス今回だとcreate -->
-
-
-
-
-
-
 
 
 
