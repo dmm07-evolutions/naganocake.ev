@@ -42,6 +42,7 @@ Rails.application.routes.draw do
     patch 'order_status/:id' => 'orders#update_status', as:"order_status"
     patch 'production_status/:id' => 'orders#update_production', as:"production_status"
     resources :genres, only: [:index, :edit, :create, :update]
+    get "categories" => "categories#index",as:"category"
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
